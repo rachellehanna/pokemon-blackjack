@@ -12,7 +12,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
     /* Fonts */
     --heading-font: 'Carter One', cursive;
     --body-font: 'Montserrat', sans-serif;
-    
+
     /* Colours */
         /* We should change these variable names to be more useful once we figure out design */
     --main-yellow: #ffff00;
@@ -23,6 +23,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 /* Typography */
 html {
     font-family: var(--body-font);
+    font-size: 125%;
 }
 
 h1 {
