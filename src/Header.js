@@ -1,8 +1,8 @@
 const Header = () => {
   return (
-    <header>
-      <h1>Welcome to the Pokemon blackjack !!! website</h1>
-    </header>
+	<header>
+	  <h1>Pokemon: Blackjack Battle</h1>
+	</header>
   )
 }
 
