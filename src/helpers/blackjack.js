@@ -27,9 +27,19 @@ export function getCardValue(card) {
 }
 
 export function getHandTotalValue(cards) {
-    return cards.reduce((acc, current) => {
+    const aces = cards.filter((card) => card.value === "ACE");
+
+    let total = cards.reduce((acc, current) => {
         return acc + getCardValue(current);
     }, 0);
+
+    aces.forEach((ace) => {
+        if (total > 21) {
+            total = total - 10;
+        }
+    });
+
+    return total;
 }
 
 export function determineWinner(playerOneTotal, playerTwoTotal) {
