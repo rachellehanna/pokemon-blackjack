@@ -18,18 +18,6 @@ const DisplayGame = () => {
 	// -----------> we change the firstCanEvolve boolean variable = true
 	// -----------> we can use response.chain.species.url which will look something like this - https://pokeapi.co/api/v2/pokemon-species/58/ and do response.chain.species.url.replace('-species', '') which will give us a URL to make another axios call to
 
-	// Logic below is wrong because while loops are synchronous meanwhile axios is async. Would not work
-	/*// Keep generating numbers and trying them until an evolution chain is found where the Pokemon can evolve
-		// Fetch a Pokemon, then check if it can evolve
-		// Fetch at this endpoint https://pokeapi.co/api/v2/evolution-chain/{endpoint}/
-		// Evolution check can be performed by seeing if res.chain.evolves_to is an empty array
-		// If empty, we don't change the secondCanEvolve boolean variable
-		// If res.chain.evolves_to has anything in it:
-		// -- we change the secondCanEvolve boolean variable = true
-		// -- we can use response.chain.species.url which will look something like this - https://pokeapi.co/api/v2/pokemon-species/58/
-		// -- response.chain.species.url.replace('-species', '');
-		// Make another API call to the above and save the response as an object userTwo*/
-
 	// Make an API call to the PokemonAPI to determine the Pokemon assigned to the player
 	useEffect(() => {
 		// Randomly generate a number between 0 and 467 - the max number of unique Evo chains within the API
@@ -83,10 +71,28 @@ const DisplayGame = () => {
 		getAPokemon("second");
 	}, []);
 
-	console.log("user two sends out", userTwoPokemon);
 	console.log("user one sends out", userOnePokemon);
+	console.log("user two sends out", userTwoPokemon);
 
-	return <></>;
+	return <>{`${userOnePokemon.name} vs ${userTwoPokemon.name}`}</>;
 };
 
 export default DisplayGame;
+
+// Logic below is wrong because while loops are synchronous meanwhile axios is async. Would not work
+/*// Keep generating numbers and trying them until an evolution chain is found where the Pokemon can evolve
+		// Fetch a Pokemon, then check if it can evolve
+		// Fetch at this endpoint https://pokeapi.co/api/v2/evolution-chain/{endpoint}/
+		// Evolution check can be performed by seeing if res.chain.evolves_to is an empty array
+		// If empty, we don't change the secondCanEvolve boolean variable
+		// If res.chain.evolves_to has anything in it:
+		// -- we change the secondCanEvolve boolean variable = true
+		// -- we can use response.chain.species.url which will look something like this - https://pokeapi.co/api/v2/pokemon-species/58/
+		// -- response.chain.species.url.replace('-species', '');
+		// Make another API call to the above and save the response as an object userTwo*/
+
+/*
+		- https://pokeapi.co/api/v2/evolution-chain?&limit=468
+		- These are all endpoints that hopefully do exist
+		- 
+		 */
