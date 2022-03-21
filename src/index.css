@@ -28,4 +28,22 @@ html {
 
 h1 {
     font-family: var(--heading-font);
+    text-align: center;
 }
+
+footer{
+  background-color: var(--main-blue);
+  position:fixed;
+  width:100%;
+  bottom:0;
+  color:var(--off-white);
+  font-size: 18px;
+  text-align: center;
+}
+
+footer a{
+  color:var(--off-white);
+}
+
+
+
