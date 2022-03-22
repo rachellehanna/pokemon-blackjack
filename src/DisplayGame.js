@@ -7,7 +7,7 @@ import {
     getGameOverMessage,
 } from "./helpers/blackjack";
 
-import User from './User'; 
+import User from "./User";
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
 
@@ -15,6 +15,9 @@ const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
     const [userOnePokemon, setUserOnePokemon] = useState({});
     const [userTwoPokemon, setUserTwoPokemon] = useState({});
+
+    // Variable to check pokemon readiness
+    const [pokemonReady, setPokemonReady] = useState(false);
 
     const [deckId, setDeckId] = useState();
     const [error, setError] = useState(false);
@@ -81,6 +84,7 @@ const DisplayGame = () => {
                     setUserTwoPokemon(res);
                 }
             });
+        setPokemonReady(true);
 
         return;
     };
@@ -125,7 +129,10 @@ const DisplayGame = () => {
 
     return (
         <section className="game">
-            {/* <User /> */}
+            {/* <User 
+                    userOnePokemon={userOnePokemon}
+                    userTwoPokemon={userTwoPokemon}
+                /> */}
 
             {error ? <p>Oh no! There was an error!</p> : null}
 
