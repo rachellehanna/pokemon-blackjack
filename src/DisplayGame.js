@@ -9,12 +9,14 @@ import {
 
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
-import Hand from "./Hand";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
     const [userOnePokemon, setUserOnePokemon] = useState({});
     const [userTwoPokemon, setUserTwoPokemon] = useState({});
+
+    // Number of rounds played, initialize at round 1
+    const [numOfRounds, setNumOfRounds] = useState(1);
 
     const [deckId, setDeckId] = useState();
     const [error, setError] = useState(false);
@@ -69,6 +71,7 @@ const DisplayGame = () => {
     const setRandomChoice = (res, user) => {
         // Make a request to the next endpoint where we want to save data from
         const nextRequestURL = res.chain.species.url.replace("-species", "");
+        console.log("now displaying", res.chain.species.name);
 
         // A function that accepts a pokemon object as a parameter and randomly determines if it is shiny
         const areYouShiny = (pokemon) => {
@@ -110,7 +113,7 @@ const DisplayGame = () => {
     useEffect(() => {
         pickAPokemon("first");
         pickAPokemon("second");
-    }, []);
+    }, [numOfRounds]);
 
     async function startGame() {
         try {
@@ -131,6 +134,7 @@ const DisplayGame = () => {
         setPlayerTwoHand([]);
         setPlayerOneDone(false);
         setPlayerTwoDone(false);
+        setNumOfRounds(numOfRounds + 1);
     }
 
     useEffect(() => {
@@ -168,7 +172,17 @@ const DisplayGame = () => {
                         opponent={userTwoPokemon}
                     />
 
-                    <Hand cards={playerOneHand} />
+                    <div className="current-hand">
+                        {playerOneHand.map((card) => {
+                            return (
+                                <img
+                                    key={card.code}
+                                    src={card.image}
+                                    alt={card.code}
+                                />
+                            );
+                        })}
+                    </div>
 
                     {isPlayerOneBust && <p>BUST!</p>}
 
@@ -209,7 +223,17 @@ const DisplayGame = () => {
                         opponent={userOnePokemon}
                     />
 
-                    <Hand cards={playerTwoHand} />
+                    <div className="current-hand">
+                        {playerTwoHand.map((card) => {
+                            return (
+                                <img
+                                    key={card.code}
+                                    src={card.image}
+                                    alt={card.code}
+                                />
+                            );
+                        })}
+                    </div>
 
                     {isPlayerTwoBust && <p>BUST!</p>}
 
