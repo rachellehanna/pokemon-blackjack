@@ -8,6 +8,8 @@ import {
 } from "./helpers/blackjack";
 
 import User from './User'; 
+import PokemonDisplay from "./PokemonDisplay";
+import Results from "./Results";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
@@ -110,100 +112,137 @@ const DisplayGame = () => {
         setPlayerTwoDone(false);
     }
 
-    // useEffect(() => {
-    //     startGame();
-    // }, []);
+    useEffect(() => {
+        startGame();
+    }, []);
 
-    // useEffect(() => {
-    //     if (playerOneDone && playerTwoDone) {
-    //         // Here we can use the `determineWinner` function and evolve the pokemon.
-    //         console.log("game over");
-    //     }
-    // }, [playerOneDone, playerTwoDone]);
+    useEffect(() => {
+        if (playerOneDone && playerTwoDone) {
+            // Here we can use the `determineWinner` function and evolve the pokemon.
+            console.log("game over");
+        }
+    }, [playerOneDone, playerTwoDone]);
 
     return (
-        <div className="app">
+        <section className="game">
+            {/* <User /> */}
+
             {error ? <p>Oh no! There was an error!</p> : null}
+
             {playerOneDone && playerTwoDone && (
-                <p>
-                    {getGameOverMessage(
-                        determineWinner(playerOneTotal, playerTwoTotal)
-                    )}
-                </p>
+                <>
+                    <Results />
+                    <p>
+                        {getGameOverMessage(
+                            determineWinner(playerOneTotal, playerTwoTotal)
+                        )}
+                    </p>
+                </>
             )}
 
-            <User />
+            {activePlayer == "player1" ? (
+                <>
+                    <p>Player 1</p>
 
-            {/* START of Player 1 UI */}
+                    <PokemonDisplay
+                        currentPoke={userOnePokemon}
+                        opponent={userTwoPokemon}
+                    />
 
-            {/* <p>Player 1</p>
-            {playerOneHand.map((card) => {
-                return <img key={card.code} src={card.image} alt={card.code} />;
-            })}
-            {isPlayerOneBust && <p>BUST!</p>}
+                    <div className="current-hand">
+                        {playerOneHand.map((card) => {
+                            return (
+                                <img
+                                    key={card.code}
+                                    src={card.image}
+                                    alt={card.code}
+                                />
+                            );
+                        })}
+                    </div>
 
-            <p>Total: {playerOneTotal}</p>
-            <button
-                disabled={playerOneDone || activePlayer !== "player1"}
-                onClick={async () => {
-                    const newCards = await drawCardsFromDeck(deckId, 1);
-                    const newHand = [...playerOneHand, ...newCards];
-                    const total = getHandTotalValue(newHand);
-                    setPlayerOneHand(newHand);
-                    if (total > 21) {
-                        setPlayerOneDone(true);
-                        setActivePlayer("player2");
-                    }
-                }}
-            >
-                Hit
-            </button>
-            <button
-                disabled={playerOneDone || activePlayer !== "player1"}
-                onClick={() => {
-                    setPlayerOneDone(true);
-                    setActivePlayer("player2");
-                }}
-            >
-                Stand
-            </button> */}
+                    {isPlayerOneBust && <p>BUST!</p>}
 
-            {/* END of Player 1 UI */}
+                    <p>Total: {playerOneTotal}</p>
 
-            {/* START of PLayer 2 UI */}
+                    <button
+                        disabled={playerOneDone || activePlayer !== "player1"}
+                        onClick={async () => {
+                            const newCards = await drawCardsFromDeck(deckId, 1);
+                            const newHand = [...playerOneHand, ...newCards];
+                            const total = getHandTotalValue(newHand);
+                            setPlayerOneHand(newHand);
+                            if (total > 21) {
+                                setPlayerOneDone(true);
+                                setActivePlayer("player2");
+                            }
+                        }}
+                    >
+                        Hit
+                    </button>
 
-            {/* <p>Player 2</p>
-            {playerTwoHand.map((card) => {
-                return <img key={card.code} src={card.image} alt={card.code} />;
-            })}
-            {isPlayerTwoBust && <p>BUST!</p>}
-            <p>Total: {playerTwoTotal}</p>
-            <button
-                disabled={playerTwoDone || activePlayer !== "player2"}
-                onClick={async () => {
-                    const newCards = await drawCardsFromDeck(deckId, 1);
-                    const newHand = [...playerTwoHand, ...newCards];
-                    const total = getHandTotalValue(newHand);
-                    setPlayerTwoHand(newHand);
-                    if (total > 21) {
-                        setPlayerTwoDone(true);
-                        setActivePlayer("player1");
-                    }
-                }}
-            >
-                Hit
-            </button>
-            <button
-                disabled={playerTwoDone || activePlayer !== "player2"}
-                onClick={() => {
-                    setPlayerTwoDone(true);
-                    setActivePlayer("player1");
-                }}
-            >
-                Stand
-            </button> */}
+                    <button
+                        disabled={playerOneDone || activePlayer !== "player1"}
+                        onClick={() => {
+                            setPlayerOneDone(true);
+                            setActivePlayer("player2");
+                        }}
+                    >
+                        Stand
+                    </button>
+                </>
+            ) : (
+                <>
+                    <p>Player 2</p>
 
-            {/* END of Player 2 UI */}
+                    <PokemonDisplay
+                        currentPoke={userTwoPokemon}
+                        opponent={userOnePokemon}
+                    />
+
+                    <div className="current-hand">
+                        {playerTwoHand.map((card) => {
+                            return (
+                                <img
+                                    key={card.code}
+                                    src={card.image}
+                                    alt={card.code}
+                                />
+                            );
+                        })}
+                    </div>
+
+                    {isPlayerTwoBust && <p>BUST!</p>}
+
+                    <p>Total: {playerTwoTotal}</p>
+
+                    <button
+                        disabled={playerTwoDone || activePlayer !== "player2"}
+                        onClick={async () => {
+                            const newCards = await drawCardsFromDeck(deckId, 1);
+                            const newHand = [...playerTwoHand, ...newCards];
+                            const total = getHandTotalValue(newHand);
+                            setPlayerTwoHand(newHand);
+                            if (total > 21) {
+                                setPlayerTwoDone(true);
+                                setActivePlayer("player1");
+                            }
+                        }}
+                    >
+                        Hit
+                    </button>
+
+                    <button
+                        disabled={playerTwoDone || activePlayer !== "player2"}
+                        onClick={() => {
+                            setPlayerTwoDone(true);
+                            setActivePlayer("player1");
+                        }}
+                    >
+                        Stand
+                    </button>
+                </>
+            )}
 
             {playerOneDone && playerTwoDone && (
                 <div>
@@ -217,7 +256,7 @@ const DisplayGame = () => {
                     </button>
                 </div>
             )}
-        </div>
+        </section>
     );
 };
 

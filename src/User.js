@@ -1,8 +1,4 @@
 // Currently everything is being held in DisplayGame, which is not modular code
-// This component will be responsible for both individual UIs (for player 1 and player 2)
-    // Switch between user states (player1 and player2)
-    // Game buttons and pokemon sprites
-    // Deck of cards stuff? 
 
 import { useState, useEffect } from "react";
 import {
@@ -12,6 +8,9 @@ import {
     determineWinner,
     getGameOverMessage,
 } from "./helpers/blackjack";
+
+import PokemonDisplay from "./PokemonDisplay";
+import Results from "./Results";
 
 const User = () => {
 
@@ -61,88 +60,138 @@ const User = () => {
             }
         }, [playerOneDone, playerTwoDone]);
 
-    // If statement that checks whose turn it is and displays the corresponding game interface 
+    // Check whose turn it is and display the corresponding game interface 
     if (activePlayer == 'player1') {
         return (
             <>
-                <p>Player 1</p>
-                {playerOneHand.map((card) => {
-                    return (
-                        <img key={card.code} src={card.image} alt={card.code} />
-                    );
-                })}
-                
-                {isPlayerOneBust && <p>BUST!</p>}
+                {error ? <p>Oh no! There was an error!</p> : null}
 
-                <p>Total: {playerOneTotal}</p>
+                {playerOneDone && playerTwoDone && (
+                    <p>
+                        {getGameOverMessage(
+                            determineWinner(playerOneTotal, playerTwoTotal)
+                        )}
+                    </p>
+                )}
 
-                <button
-                    disabled={playerOneDone || activePlayer !== "player1"}
-                    onClick={async () => {
-                        const newCards = await drawCardsFromDeck(deckId, 1);
-                        const newHand = [...playerOneHand, ...newCards];
-                        const total = getHandTotalValue(newHand);
-                        setPlayerOneHand(newHand);
-                        if (total > 21) {
-                            setPlayerOneDone(true);
-                            setActivePlayer("player2");
-                        }
-                    }}
-                >
-                    Hit
-                </button>
+                {activePlayer == "player1" ? (
+                    <>
+                        <p>Player 1</p>
+                        <div className="current-hand">
+                            {playerOneHand.map((card) => {
+                                return (
+                                    <img
+                                        key={card.code}
+                                        src={card.image}
+                                        alt={card.code}
+                                    />
+                                );
+                            })}
+                        </div>
+                        {isPlayerOneBust && <p>BUST!</p>}
 
-                <button
-                    disabled={playerOneDone || activePlayer !== "player1"}
-                    onClick={() => {
-                        setPlayerOneDone(true);
-                        setActivePlayer("player2");
-                    }}
-                >
-                    Stand
-                </button>
+                        <p>Total: {playerOneTotal}</p>
+                        <button
+                            disabled={
+                                playerOneDone || activePlayer !== "player1"
+                            }
+                            onClick={async () => {
+                                const newCards = await drawCardsFromDeck(
+                                    deckId,
+                                    1
+                                );
+                                const newHand = [...playerOneHand, ...newCards];
+                                const total = getHandTotalValue(newHand);
+                                setPlayerOneHand(newHand);
+                                if (total > 21) {
+                                    setPlayerOneDone(true);
+                                    setActivePlayer("player2");
+                                }
+                            }}
+                        >
+                            Hit
+                        </button>
+                        <button
+                            disabled={
+                                playerOneDone || activePlayer !== "player1"
+                            }
+                            onClick={() => {
+                                setPlayerOneDone(true);
+                                setActivePlayer("player2");
+                            }}
+                        >
+                            Stand
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <p>Player 2</p>
+                        <div className="current-hand">
+                            {playerTwoHand.map((card) => {
+                                return (
+                                    <img
+                                        key={card.code}
+                                        src={card.image}
+                                        alt={card.code}
+                                    />
+                                );
+                            })}
+                        </div>
+                        {isPlayerTwoBust && <p>BUST!</p>}
+                        <p>Total: {playerTwoTotal}</p>
+                        <button
+                            disabled={
+                                playerTwoDone || activePlayer !== "player2"
+                            }
+                            onClick={async () => {
+                                const newCards = await drawCardsFromDeck(
+                                    deckId,
+                                    1
+                                );
+                                const newHand = [...playerTwoHand, ...newCards];
+                                const total = getHandTotalValue(newHand);
+                                setPlayerTwoHand(newHand);
+                                if (total > 21) {
+                                    setPlayerTwoDone(true);
+                                    setActivePlayer("player1");
+                                }
+                            }}
+                        >
+                            Hit
+                        </button>
+                        <button
+                            disabled={
+                                playerTwoDone || activePlayer !== "player2"
+                            }
+                            onClick={() => {
+                                setPlayerTwoDone(true);
+                                setActivePlayer("player1");
+                            }}
+                        >
+                            Stand
+                        </button>
+                    </>
+                )}
+
+                {playerOneDone && playerTwoDone && (
+                    <div>
+                        <button
+                            onClick={() => {
+                                resetGame();
+                                startGame();
+                            }}
+                        >
+                            Play Again
+                        </button>
+                    </div>
+                )}
             </>
         );
-    } else {
+    // Display error message if error state is true
+    } else if (error) {
         return (
             <>
-                <p>Player 2</p>
-
-                {playerTwoHand.map((card) => {
-                    return (
-                        <img key={card.code} src={card.image} alt={card.code} />
-                    );
-                })}
-
-                {isPlayerTwoBust && <p>BUST!</p>}
-
-                <p>Total: {playerTwoTotal}</p>
-
-                <button
-                    disabled={playerTwoDone || activePlayer !== "player2"}
-                    onClick={async () => {
-                        const newCards = await drawCardsFromDeck(deckId, 1);
-                        const newHand = [...playerTwoHand, ...newCards];
-                        const total = getHandTotalValue(newHand);
-                        setPlayerTwoHand(newHand);
-                        if (total > 21) {
-                            setPlayerTwoDone(true);
-                            setActivePlayer("player1");
-                        }
-                    }}
-                >
-                    Hit
-                </button>
-
-                <button
-                    disabled={playerTwoDone || activePlayer !== "player2"}
-                    onClick={() => {
-                        setPlayerTwoDone(true);
-                        setActivePlayer("player1");
-                    }}
-                >
-                    Stand
-                </button>
+                <p>Oh no! There was an error!</p>
             </>
         );
     }
