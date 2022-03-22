@@ -4,7 +4,6 @@ const PokemonDisplay = (props) => {
 
     // Only render if the data is available
     if (opponent.sprites && currentPoke.sprites) {
-        console.log(opponent);
         return (
             <>
                 <div className="opponent-display">
@@ -26,7 +25,7 @@ const PokemonDisplay = (props) => {
                     </div>
                 </div>
 
-                <div className="current-poke-display">
+                <div className="poke-display">
                     <div className="img-container">
                         <img
                             src={currentPoke.sprites.back}

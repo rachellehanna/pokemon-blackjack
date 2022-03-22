@@ -31,6 +31,38 @@ h1 {
     text-align: center;
 }
 
+/* Pokemon Display */
+.opponent-display,
+.poke-display {
+    display: flex;
+}
+
+.details-container {
+    border: 2px solid black;
+    padding: 20px 40px; 
+    width: 40%; 
+    margin: 30px 30px;
+}
+
+.opponent-display img, 
+.poke-display img {
+    width: 100%;
+}
+
+.opponent-display .img-container,
+.poke-display .img-container {
+    width: 15%;
+}
+
+.poke-name {
+    text-transform: uppercase; 
+}
+
+.shiny-status {
+    text-transform: none; 
+}
+
+/* Footer */
 footer{
   background-color: var(--main-blue);
   /* position:fixed; -- temporarily commenting this out because it was hiding game buttons */
@@ -44,6 +76,3 @@ footer{
 footer a{
   color:var(--off-white);
 }
-
-
-

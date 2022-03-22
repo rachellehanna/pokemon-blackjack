@@ -165,7 +165,7 @@ const DisplayGame = () => {
                 </>
             )}
 
-            {activePlayer == "player1" ? (
+            {activePlayer === "player1" ? (
                 <>
                     <p>Player 1</p>
 
