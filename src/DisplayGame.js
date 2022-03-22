@@ -7,7 +7,6 @@ import {
     getGameOverMessage,
 } from "./helpers/blackjack";
 
-import User from "./User";
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
 
@@ -146,12 +145,6 @@ const DisplayGame = () => {
 
     return (
         <section className="game">
-            {/* The following user component exists but is currently not being rendered - left it so we can discuss app structure as a group */}
-            {/* <User 
-                    userOnePokemon={userOnePokemon}
-                    userTwoPokemon={userTwoPokemon}
-                /> */}
-
             {error ? <p>Oh no! There was an error!</p> : null}
 
             {playerOneDone && playerTwoDone && (
