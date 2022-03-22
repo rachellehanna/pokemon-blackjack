@@ -4,11 +4,19 @@ const PokemonDisplay = (props) => {
 
     // Only render if the data is available
     if (opponent.sprites && currentPoke.sprites) {
+        console.log(opponent);
         return (
             <>
                 <div className="opponent-display">
                     <div className="details-container">
-                        <p className="poke-name">{opponent.name}</p>
+                        <p className="poke-name">
+                            {opponent.name}
+                            {opponent.shiny ? (
+                                <span className="shiny-status">
+                                    {` `}(Shiny)
+                                </span>
+                            ) : null}
+                        </p>
                     </div>
                     <div className="img-container">
                         <img
@@ -26,7 +34,14 @@ const PokemonDisplay = (props) => {
                         />
                     </div>
                     <div className="details-container">
-                        <p className="poke-name">{currentPoke.name}</p>
+                        <p className="poke-name">
+                            {currentPoke.name}
+                            {currentPoke.shiny ? (
+                                <span className="shiny-status">
+                                    {` `}(Shiny)
+                                </span>
+                            ) : null}
+                        </p>
                     </div>
                 </div>
             </>

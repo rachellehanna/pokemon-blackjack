@@ -73,11 +73,7 @@ const DisplayGame = () => {
         // A function that accepts a pokemon object as a parameter and randomly determines if it is shiny
         const areYouShiny = (pokemon) => {
             const data = {
-                sprites: {
-                    front: '',
-                    back: ''
-                }, 
-                name: ''
+                sprites: {}
             };
             // 1 in 4 chance that the pokemon is shiny
             let odds = Math.floor(Math.random() * 4);
@@ -86,10 +82,12 @@ const DisplayGame = () => {
                 data.sprites.front = pokemon.sprites.front_shiny;
                 data.sprites.back = pokemon.sprites.back_shiny;
                 data.name = pokemon.name;
+                data.shiny = true;
             } else {
                 data.sprites.front = pokemon.sprites.front_default;
                 data.sprites.back = pokemon.sprites.back_default;
                 data.name = pokemon.name;
+                data.shiny = false; 
             }
             return data;
         };
