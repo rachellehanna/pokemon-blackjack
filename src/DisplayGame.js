@@ -7,6 +7,8 @@ import {
     getGameOverMessage,
 } from "./helpers/blackjack";
 
+import User from './User'; 
+
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
     const [userOnePokemon, setUserOnePokemon] = useState({});
@@ -108,16 +110,16 @@ const DisplayGame = () => {
         setPlayerTwoDone(false);
     }
 
-    useEffect(() => {
-        startGame();
-    }, []);
+    // useEffect(() => {
+    //     startGame();
+    // }, []);
 
-    useEffect(() => {
-        if (playerOneDone && playerTwoDone) {
-            // Here we can use the `determineWinner` function and evolve the pokemon.
-            console.log("game over");
-        }
-    }, [playerOneDone, playerTwoDone]);
+    // useEffect(() => {
+    //     if (playerOneDone && playerTwoDone) {
+    //         // Here we can use the `determineWinner` function and evolve the pokemon.
+    //         console.log("game over");
+    //     }
+    // }, [playerOneDone, playerTwoDone]);
 
     return (
         <div className="app">
@@ -129,7 +131,12 @@ const DisplayGame = () => {
                     )}
                 </p>
             )}
-            <p>Player 1</p>
+
+            <User />
+
+            {/* START of Player 1 UI */}
+
+            {/* <p>Player 1</p>
             {playerOneHand.map((card) => {
                 return <img key={card.code} src={card.image} alt={card.code} />;
             })}
@@ -159,9 +166,13 @@ const DisplayGame = () => {
                 }}
             >
                 Stand
-            </button>
+            </button> */}
 
-            <p>Player 2</p>
+            {/* END of Player 1 UI */}
+
+            {/* START of PLayer 2 UI */}
+
+            {/* <p>Player 2</p>
             {playerTwoHand.map((card) => {
                 return <img key={card.code} src={card.image} alt={card.code} />;
             })}
@@ -190,7 +201,10 @@ const DisplayGame = () => {
                 }}
             >
                 Stand
-            </button>
+            </button> */}
+
+            {/* END of Player 2 UI */}
+
             {playerOneDone && playerTwoDone && (
                 <div>
                     <button

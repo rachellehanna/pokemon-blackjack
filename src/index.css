@@ -33,7 +33,7 @@ h1 {
 
 footer{
   background-color: var(--main-blue);
-  position:fixed;
+  /* position:fixed; -- temporarily commenting this out because it was hiding game buttons */
   width:100%;
   bottom:0;
   color:var(--off-white);
