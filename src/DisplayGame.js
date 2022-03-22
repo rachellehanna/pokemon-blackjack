@@ -16,9 +16,6 @@ const DisplayGame = () => {
     const [userOnePokemon, setUserOnePokemon] = useState({});
     const [userTwoPokemon, setUserTwoPokemon] = useState({});
 
-    // Variable to check pokemon readiness
-    const [pokemonReady, setPokemonReady] = useState(false);
-
     const [deckId, setDeckId] = useState();
     const [error, setError] = useState(false);
     const [activePlayer, setActivePlayer] = useState("player1");
@@ -73,19 +70,41 @@ const DisplayGame = () => {
         // Make a request to the next endpoint where we want to save data from
         const nextRequestURL = res.chain.species.url.replace("-species", "");
 
+        // A function that accepts a pokemon object as a parameter and randomly determines if it is shiny
+        const areYouShiny = (pokemon) => {
+            const data = {
+                sprites: {
+                    front: '',
+                    back: ''
+                }, 
+                name: ''
+            };
+            // 1 in 4 chance that the pokemon is shiny
+            let odds = Math.floor(Math.random() * 4);
+
+            if (odds === 1) {
+                data.sprites.front = pokemon.sprites.front_shiny;
+                data.sprites.back = pokemon.sprites.back_shiny;
+                data.name = pokemon.name;
+            } else {
+                data.sprites.front = pokemon.sprites.front_default;
+                data.sprites.back = pokemon.sprites.back_default;
+                data.name = pokemon.name;
+            }
+            return data;
+        };
+
         fetch(nextRequestURL)
             .then((res) => {
                 return res.json();
             })
             .then((res) => {
                 if (user === "first") {
-                    setUserOnePokemon(res);
+                    setUserOnePokemon(areYouShiny(res));
                 } else if (user === "second") {
-                    setUserTwoPokemon(res);
+                    setUserTwoPokemon(areYouShiny(res));
                 }
             });
-        setPokemonReady(true);
-
         return;
     };
 
@@ -129,6 +148,7 @@ const DisplayGame = () => {
 
     return (
         <section className="game">
+            {/* The following user component exists but is currently not being rendered - left it so we can discuss app structure as a group */}
             {/* <User 
                     userOnePokemon={userOnePokemon}
                     userTwoPokemon={userTwoPokemon}
