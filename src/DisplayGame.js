@@ -9,6 +9,7 @@ import {
 
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
+import Hand from "./Hand";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
@@ -72,7 +73,7 @@ const DisplayGame = () => {
         // A function that accepts a pokemon object as a parameter and randomly determines if it is shiny
         const areYouShiny = (pokemon) => {
             const data = {
-                sprites: {}
+                sprites: {},
             };
             // 1 in 4 chance that the pokemon is shiny
             let odds = Math.floor(Math.random() * 4);
@@ -86,7 +87,7 @@ const DisplayGame = () => {
                 data.sprites.front = pokemon.sprites.front_default;
                 data.sprites.back = pokemon.sprites.back_default;
                 data.name = pokemon.name;
-                data.shiny = false; 
+                data.shiny = false;
             }
             return data;
         };
@@ -167,17 +168,7 @@ const DisplayGame = () => {
                         opponent={userTwoPokemon}
                     />
 
-                    <div className="current-hand">
-                        {playerOneHand.map((card) => {
-                            return (
-                                <img
-                                    key={card.code}
-                                    src={card.image}
-                                    alt={card.code}
-                                />
-                            );
-                        })}
-                    </div>
+                    <Hand cards={playerOneHand} />
 
                     {isPlayerOneBust && <p>BUST!</p>}
 
@@ -218,17 +209,7 @@ const DisplayGame = () => {
                         opponent={userOnePokemon}
                     />
 
-                    <div className="current-hand">
-                        {playerTwoHand.map((card) => {
-                            return (
-                                <img
-                                    key={card.code}
-                                    src={card.image}
-                                    alt={card.code}
-                                />
-                            );
-                        })}
-                    </div>
+                    <Hand cards={playerTwoHand} />
 
                     {isPlayerTwoBust && <p>BUST!</p>}
 
