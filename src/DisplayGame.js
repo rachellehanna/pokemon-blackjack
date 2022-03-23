@@ -195,7 +195,7 @@ const DisplayGame = () => {
 
             {
                 // If both players are done, then display Results screen
-                playerOneDone && playerTwoDone ? (
+                playerOneDone && playerTwoDone && (
                     <>
                         <Results
                             playerOneTotal={playerOneTotal}
@@ -204,7 +204,10 @@ const DisplayGame = () => {
                             userTwoPokemon={userTwoPokemon}
                         />
                     </>
-                ) : // Based on the active player, re-render the Pokemon facing the correct direction
+                )
+            }
+            {
+                // Based on the active player, re-render the Pokemon facing the correct direction
                 activePlayer === "player1" ? (
                     <>
                         <p>Player One's Turn!</p>
