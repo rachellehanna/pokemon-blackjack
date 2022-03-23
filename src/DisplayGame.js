@@ -7,6 +7,7 @@ import {
 
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
+import Hand from "./Hand";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
@@ -213,17 +214,7 @@ const DisplayGame = () => {
                             opponent={userTwoPokemon}
                         />
 
-                        <div className="current-hand">
-                            {playerOneHand.map((card) => {
-                                return (
-                                    <img
-                                        key={card.code}
-                                        src={card.image}
-                                        alt={card.code}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Hand cards={playerOneHand} />
 
                         {isPlayerOneBust && <p>BUST!</p>}
 
@@ -271,17 +262,7 @@ const DisplayGame = () => {
                             opponent={userOnePokemon}
                         />
 
-                        <div className="current-hand">
-                            {playerTwoHand.map((card) => {
-                                return (
-                                    <img
-                                        key={card.code}
-                                        src={card.image}
-                                        alt={card.code}
-                                    />
-                                );
-                            })}
-                        </div>
+                        <Hand cards={playerTwoHand} />
 
                         {isPlayerTwoBust && <p>BUST!</p>}
 
