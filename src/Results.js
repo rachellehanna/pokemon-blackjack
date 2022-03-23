@@ -7,18 +7,13 @@ const Results = (props) => {
         props.playerTwoTotal
     );
     const resultMessage = getGameOverMessage(determinedWinner);
-    const [gameWinner, setGameWinner] = useState({});
 
-    // On component mount, check who has won the game.
-    useEffect(() => {
-        if (determinedWinner === "player1") {
-            setGameWinner(props.userOnePokemon);
-        } else if (determinedWinner === "player2") {
-            setGameWinner(props.userTwoPokemon);
-        } else {
-            setGameWinner({});
-        }
-    }, [determinedWinner, props.userOnePokemon, props.userTwoPokemon]);
+    let gameWinner = {};
+    if (determinedWinner === "player1") {
+        gameWinner = props.userOnePokemon;
+    } else if (determinedWinner === "player2") {
+        gameWinner = props.userTwoPokemon;
+    }
 
     if (gameWinner.evoSprites) {
         return (
