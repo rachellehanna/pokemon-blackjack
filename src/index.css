@@ -6,6 +6,7 @@ html {
 }
 body {
     margin: 0;
+    background:#edfeff;
 }
 article,
 aside,
@@ -113,7 +114,16 @@ input {
 button,
 select {
     text-transform: none;
+    padding:10px;
+    width:90px;
+    border-radius: 10px;
 }
+
+button:hover{
+  background-color: #ffff00;
+  transition:0.7s;
+}
+
 button,
 html [type="button"],
 [type="reset"],
