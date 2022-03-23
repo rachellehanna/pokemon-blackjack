@@ -276,6 +276,7 @@ h1 {
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
+    border-radius:20px;
 }
 
 .opponent-display img,
@@ -290,10 +291,15 @@ h1 {
 
 .poke-name {
     text-transform: uppercase;
+    text-align: center;
 }
 
 .shiny-status {
     text-transform: none;
+}
+
+.current-hand img{
+  padding:0 7px;
 }
 
 /* Button styles */
