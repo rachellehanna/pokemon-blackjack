@@ -253,6 +253,11 @@ body{
   background:#edfeff;
 }
 
+.wrapper{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 h1 {
     font-family: var(--heading-font);
     text-align: center;
@@ -297,17 +302,19 @@ button {
 padding:10px;
 width:90px;
 border-radius: 10px;
+transition:0.7s;
+cursor:pointer;
 }
 
 button:hover{
   background-color: #ffff00;
-  transition:0.7s;
 }
 
 button:focus{
   background-color: #ffff00;
   border:2px solid #142b68;
 }
+
 
 /* Footer */
 footer {
