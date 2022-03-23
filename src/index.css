@@ -6,7 +6,7 @@ html {
 }
 body {
     margin: 0;
-    background:#edfeff;
+    
 }
 article,
 aside,
@@ -114,15 +114,10 @@ input {
 button,
 select {
     text-transform: none;
-    padding:10px;
-    width:90px;
-    border-radius: 10px;
+    
 }
 
-button:hover{
-  background-color: #ffff00;
-  transition:0.7s;
-}
+
 
 button,
 html [type="button"],
@@ -254,6 +249,10 @@ html {
     font-size: 125%;
 }
 
+body{
+  background:#edfeff;
+}
+
 h1 {
     font-family: var(--heading-font);
     text-align: center;
@@ -292,6 +291,24 @@ h1 {
     text-transform: none;
 }
 
+/* Button styles */
+
+button {
+padding:10px;
+width:90px;
+border-radius: 10px;
+}
+
+button:hover{
+  background-color: #ffff00;
+  transition:0.7s;
+}
+
+button:focus{
+  background-color: #ffff00;
+  border:2px solid #142b68;
+}
+
 /* Footer */
 footer {
     background-color: var(--main-blue);
@@ -301,8 +318,22 @@ footer {
     color: var(--off-white);
     font-size: 18px;
     text-align: center;
+    position: relative;
 }
 
 footer a {
     color: var(--off-white);
+}
+
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
 }
