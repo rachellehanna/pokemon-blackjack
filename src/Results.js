@@ -20,30 +20,40 @@ const Results = (props) => {
         }
     }, [determinedWinner, props.userOnePokemon, props.userTwoPokemon]);
 
-    return (
-        <section className="results">
-            <div className="results-message">
-                <h2>Good game!</h2>
-                <p>{resultMessage}</p>
-            </div>
-            <div className="evolution-display">
-                {
-                    // If determined winner is null, then show tie message, otherwise show the game winner
-                    determinedWinner ? (
-                        <p>
-                            Your{" "}
-                            {`${gameWinner.name} has evolved into ${gameWinner.evoName}!`}
-                        </p>
-                    ) : (
-                        <p>
-                            It appears you have both tied. Win the game to
-                            evolve your Pokemon!
-                        </p>
-                    )
-                }
-            </div>
-        </section>
-    );
+    if (gameWinner.evoSprites) {
+        return (
+            <section className="results">
+                <div className="results-message">
+                    <h2>Good game!</h2>
+                    <p>{resultMessage}</p>
+                </div>
+                <div className="evolution-display">
+                    {
+                        // If determined winner is null, then show tie message, otherwise show the game winner
+                        determinedWinner ? (
+                            <div className="winnerDisplay">
+                                <p>
+                                    Your{" "}
+                                    {`${gameWinner.name} has evolved into ${gameWinner.evoName}!`}
+                                </p>
+                                <img
+                                    src={`${gameWinner.evoSprites.front}`}
+                                    alt=""
+                                />
+                            </div>
+                        ) : (
+                            <p>
+                                It appears you have both tied. Win the game to
+                                evolve your Pokemon!
+                            </p>
+                        )
+                    }
+                </div>
+            </section>
+        );
+    } else {
+        return <h2>Loading...</h2>;
+    }
 };
 
 export default Results;
