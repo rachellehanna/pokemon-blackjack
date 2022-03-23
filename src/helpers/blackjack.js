@@ -52,6 +52,7 @@ export function determineWinner(playerOneTotal, playerTwoTotal) {
         return "player1";
     } else if (playerOneTotal === playerTwoTotal) {
         // Also a tie
+        // return "tie";
         return null;
     } else {
         return playerOneTotal > playerTwoTotal ? "player1" : "player2";

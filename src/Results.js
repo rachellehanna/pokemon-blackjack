@@ -2,18 +2,27 @@ import { useEffect, useState } from "react";
 import { getGameOverMessage, determineWinner } from "./helpers/blackjack";
 
 const Results = (props) => {
+    // Uses helper function to determine which user has won, returns
     const determinedWinner = determineWinner(
         props.playerOneTotal,
         props.playerTwoTotal
     );
     const resultMessage = getGameOverMessage(determinedWinner);
+    // State that tracks who has won using the helper function
+    const [gameWinner, setGameWinner] = useState({});
 
-    let gameWinner = {};
-    if (determinedWinner === "player1") {
-        gameWinner = props.userOnePokemon;
-    } else if (determinedWinner === "player2") {
-        gameWinner = props.userTwoPokemon;
-    }
+    // On component mount, check who has won the game.
+    useEffect(() => {
+        if (determinedWinner === "player1") {
+            const dummy = props.userOnePokemon;
+            setGameWinner(dummy);
+        } else if (determinedWinner === "player2") {
+            const dummy = props.userTwoPokemon;
+            setGameWinner(dummy);
+        } else {
+            setGameWinner({});
+        }
+    }, [determinedWinner, props.userOnePokemon, props.userTwoPokemon]);
 
     if (gameWinner.evoSprites) {
         return (
@@ -24,8 +33,9 @@ const Results = (props) => {
                 </div>
                 <div className="evolution-display">
                     {
-                        // If determined winner is null, then show tie message, otherwise show the game winner
-                        determinedWinner ? (
+                        // If determined winner is not player1, player2, or there is no tie
+                        determinedWinner === "player1" ||
+                        determinedWinner === "player2" ? (
                             <div className="winnerDisplay">
                                 <p>
                                     Your{" "}
@@ -36,15 +46,17 @@ const Results = (props) => {
                                     alt=""
                                 />
                             </div>
-                        ) : (
-                            <p>
-                                It appears you have both tied. Win the game to
-                                evolve your Pokemon!
-                            </p>
-                        )
+                        ) : null
                     }
                 </div>
             </section>
+        );
+    } else if (Object.keys(gameWinner).length === 0) {
+        return (
+            <p>
+                It appears you have both tied. Win the game to evolve your
+                Pokemon!
+            </p>
         );
     } else {
         return <h2>Loading...</h2>;
