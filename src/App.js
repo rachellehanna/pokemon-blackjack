@@ -1,6 +1,6 @@
-import Header from "./Header";
-import Footer from "./Footer";
-import DisplayGame from "./DisplayGame";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import DisplayGame from "./components/DisplayGame";
 
 function App() {
   return (

@@ -3,7 +3,7 @@ import {
   getNewDeck,
   drawCardsFromDeck,
   getHandTotalValue,
-} from "./helpers/blackjack";
+} from "../helpers/blackjack";
 
 import PokemonDisplay from "./PokemonDisplay";
 import Results from "./Results";
