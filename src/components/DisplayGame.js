@@ -38,34 +38,6 @@ const DisplayGame = () => {
     // Highest evolution chain index
     const maxEvoChains = 476;
 
-    // Make API calls until an evolution chain is found where the Pokemon can evolve
-    const pickAPokemon = async (user) => {
-        const pokeIndex = getRandomInt(maxEvoChains);
-
-        await fetch(`https://pokeapi.co/api/v2/evolution-chain/${pokeIndex}`)
-            .then((res) => {
-                // If response is OK - proceed to parse JSON, else throw error
-                if (res.ok) {
-                    return res.json();
-                } else {
-                    throw new Error();
-                }
-            })
-            .then((res) => {
-                // If array is empty, make a recursive API call again
-                if (res.chain["evolves_to"].length === 0) {
-                    return pickAPokemon(user);
-                } else {
-                    // set Pokemon depending on which user we are generating it for
-                    setRandomChoice(res, user);
-                    return res;
-                }
-            })
-            .catch((err) => {
-                return pickAPokemon(user);
-            });
-    };
-
     // A function that accepts a pokemon object as a parameter and randomly determines if it is shiny
     const areYouShiny = (pokemon) => {
         const data = {
@@ -152,6 +124,35 @@ const DisplayGame = () => {
 
     // On round change - determine the Pokemon to be assigned to the players randomly
     useEffect(() => {
+        // Make API calls until an evolution chain is found where the Pokemon can evolve
+        const pickAPokemon = async (user) => {
+            const pokeIndex = getRandomInt(maxEvoChains);
+
+            await fetch(
+                `https://pokeapi.co/api/v2/evolution-chain/${pokeIndex}`
+            )
+                .then((res) => {
+                    // If response is OK - proceed to parse JSON, else throw error
+                    if (res.ok) {
+                        return res.json();
+                    } else {
+                        throw new Error();
+                    }
+                })
+                .then((res) => {
+                    // If array is empty, make a recursive API call again
+                    if (res.chain["evolves_to"].length === 0) {
+                        return pickAPokemon(user);
+                    } else {
+                        // set Pokemon depending on which user we are generating it for
+                        setRandomChoice(res, user);
+                        return res;
+                    }
+                })
+                .catch((err) => {
+                    return pickAPokemon(user);
+                });
+        };
         pickAPokemon("first");
         pickAPokemon("second");
     }, [numOfRounds]);
