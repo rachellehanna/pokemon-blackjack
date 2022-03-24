@@ -55,7 +55,7 @@ const Footer = () => {
         >
           Deck of Cards API
         </a>
-        &nbsp;
+        {` `}|{` `}
         Created at{` `}
         <a
           href="https://junocollege.com/"

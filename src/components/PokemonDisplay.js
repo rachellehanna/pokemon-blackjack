@@ -20,7 +20,7 @@ const PokemonDisplay = (props) => {
                     <div className="img-container">
                         <img
                             src={opponent.sprites.front}
-                            alt={`A picture of your opponent, ${opponent.name}`}
+                            alt={`Your opponent, ${opponent.name}`}
                         />
                     </div>
                 </div>
@@ -29,7 +29,7 @@ const PokemonDisplay = (props) => {
                     <div className="img-container">
                         <img
                             src={currentPoke.sprites.back}
-                            alt={`A picture of your pokemon, ${currentPoke.name}`}
+                            alt={`Your pokemon, ${currentPoke.name}`}
                         />
                     </div>
                     <div className="details-container">
@@ -46,10 +46,8 @@ const PokemonDisplay = (props) => {
             </>
         );
     } else {
-        return (
-            <h2>Loading...</h2>
-        );
+        return <h2>Loading...</h2>;
     }
-}
+};
 
-export default PokemonDisplay; 
+export default PokemonDisplay;
