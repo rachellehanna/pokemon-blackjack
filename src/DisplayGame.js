@@ -1,3 +1,4 @@
+// hi ish
 import { useState, useEffect } from "react";
 import {
     getNewDeck,
@@ -178,16 +179,29 @@ const DisplayGame = () => {
         setNumOfRounds(numOfRounds + 1);
     }
 
+    async function handlePlayerOneHit() {
+        const newCards = await drawCardsFromDeck(deckId, 1);
+        const newHand = [...playerOneHand, ...newCards];
+        const total = getHandTotalValue(newHand);
+        setPlayerOneHand(newHand);
+        if (total > 21) {
+            setPlayerOneDone(true);
+        }
+    }
+
+    async function handlePlayerTwoHit() {
+        const newCards = await drawCardsFromDeck(deckId, 1);
+        const newHand = [...playerTwoHand, ...newCards];
+        const total = getHandTotalValue(newHand);
+        setPlayerTwoHand(newHand);
+        if (total > 21) {
+            setPlayerTwoDone(true);
+        }
+    }
+
     useEffect(() => {
         startGame();
     }, []);
-
-    // useEffect(() => {
-    //     if (playerOneDone && playerTwoDone) {
-    //         // Here we can use the `determineWinner` function and evolve the pokemon.
-    //         console.log("game over");
-    //     }
-    // }, [playerOneDone, playerTwoDone]);
 
     return (
         <section className="game">
@@ -206,6 +220,7 @@ const DisplayGame = () => {
                     </>
                 )
             }
+
             {
                 // Based on the active player, re-render the Pokemon facing the correct direction
                 activePlayer === "player1" ? (
@@ -227,19 +242,7 @@ const DisplayGame = () => {
                             disabled={
                                 playerOneDone || activePlayer !== "player1"
                             }
-                            onClick={async () => {
-                                const newCards = await drawCardsFromDeck(
-                                    deckId,
-                                    1
-                                );
-                                const newHand = [...playerOneHand, ...newCards];
-                                const total = getHandTotalValue(newHand);
-                                setPlayerOneHand(newHand);
-                                if (total > 21) {
-                                    setPlayerOneDone(true);
-                                    setActivePlayer("player2");
-                                }
-                            }}
+                            onClick={handlePlayerOneHit}
                         >
                             Hit
                         </button>
@@ -250,11 +253,20 @@ const DisplayGame = () => {
                             }
                             onClick={() => {
                                 setPlayerOneDone(true);
-                                setActivePlayer("player2");
                             }}
                         >
                             Stand
                         </button>
+
+                        {playerOneDone && !playerTwoDone ? (
+                            <button
+                                onClick={() => {
+                                    setActivePlayer("player2");
+                                }}
+                            >
+                                Player Two's Turn!
+                            </button>
+                        ) : null}
                     </>
                 ) : (
                     <>
@@ -275,19 +287,7 @@ const DisplayGame = () => {
                             disabled={
                                 playerTwoDone || activePlayer !== "player2"
                             }
-                            onClick={async () => {
-                                const newCards = await drawCardsFromDeck(
-                                    deckId,
-                                    1
-                                );
-                                const newHand = [...playerTwoHand, ...newCards];
-                                const total = getHandTotalValue(newHand);
-                                setPlayerTwoHand(newHand);
-                                if (total > 21) {
-                                    setPlayerTwoDone(true);
-                                    setActivePlayer("player1");
-                                }
-                            }}
+                            onClick={handlePlayerTwoHit}
                         >
                             Hit
                         </button>
@@ -298,11 +298,20 @@ const DisplayGame = () => {
                             }
                             onClick={() => {
                                 setPlayerTwoDone(true);
-                                setActivePlayer("player1");
                             }}
                         >
                             Stand
                         </button>
+
+                        {playerTwoDone && !playerOneDone ? (
+                            <button
+                                onClick={() => {
+                                    setActivePlayer("player1");
+                                }}
+                            >
+                                Player One's Turn!
+                            </button>
+                        ) : null}
                     </>
                 )
             }
