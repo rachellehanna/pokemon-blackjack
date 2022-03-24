@@ -46,10 +46,8 @@ const PokemonDisplay = (props) => {
             </>
         );
     } else {
-        return (
-            <h2>Loading...</h2>
-        );
+        return <h2>Loading...</h2>;
     }
-}
+};
 
-export default PokemonDisplay; 
+export default PokemonDisplay;

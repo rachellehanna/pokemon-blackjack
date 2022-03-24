@@ -6,7 +6,6 @@ html {
 }
 body {
     margin: 0;
-    
 }
 article,
 aside,
@@ -114,10 +113,7 @@ input {
 button,
 select {
     text-transform: none;
-    
 }
-
-
 
 button,
 html [type="button"],
@@ -223,7 +219,7 @@ template {
 }
 
 /* Custom Pokemon Battle Font */
-    /* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
+/* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
 @font-face {
     font-family: "Poke Battle";
     src: url(./battle-font/f77-pokemon-battle.ttf);
@@ -237,7 +233,7 @@ template {
     --battle-font: "Poke Battle", sans-serif;
 
     /* Colours */
-        /* We should change these variable names to be more useful once we figure out design */
+    /* We should change these variable names to be more useful once we figure out design */
     --main-yellow: #ffff00;
     --main-blue: #142b68;
     --off-white: #edfeff;
@@ -249,13 +245,13 @@ html {
     font-size: 125%;
 }
 
-body{
-  background:#edfeff;
+body {
+    background: #edfeff;
 }
 
-.wrapper{
-  max-width: 1280px;
-  margin: 0 auto;
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -276,7 +272,7 @@ h1 {
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
-    border-radius:20px;
+    border-radius: 20px;
 }
 
 .opponent-display img,
@@ -298,29 +294,28 @@ h1 {
     text-transform: none;
 }
 
-.current-hand img{
-  padding:0 7px;
+.current-hand img {
+    padding: 0 7px;
 }
 
 /* Button styles */
 
 button {
-padding:10px;
-width:90px;
-border-radius: 10px;
-transition:0.7s;
-cursor:pointer;
+    padding: 10px;
+    width: 90px;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
 }
 
-button:hover{
-  background-color: #ffff00;
+button:hover {
+    background-color: #ffff00;
 }
 
-button:focus{
-  background-color: #ffff00;
-  border:2px solid #142b68;
+button:focus {
+    background-color: #ffff00;
+    border: 2px solid #142b68;
 }
-
 
 /* Footer */
 footer {
@@ -337,7 +332,6 @@ footer {
 footer a {
     color: var(--off-white);
 }
-
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
