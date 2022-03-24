@@ -6,6 +6,7 @@ html {
 }
 body {
     margin: 0;
+    
 }
 article,
 aside,
@@ -113,7 +114,11 @@ input {
 button,
 select {
     text-transform: none;
+    
 }
+
+
+
 button,
 html [type="button"],
 [type="reset"],
@@ -244,6 +249,15 @@ html {
     font-size: 125%;
 }
 
+body{
+  background:#edfeff;
+}
+
+.wrapper{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 h1 {
     font-family: var(--heading-font);
     text-align: center;
@@ -262,6 +276,7 @@ h1 {
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
+    border-radius:20px;
 }
 
 .opponent-display img,
@@ -276,11 +291,36 @@ h1 {
 
 .poke-name {
     text-transform: uppercase;
+    text-align: center;
 }
 
 .shiny-status {
     text-transform: none;
 }
+
+.current-hand img{
+  padding:0 7px;
+}
+
+/* Button styles */
+
+button {
+padding:10px;
+width:90px;
+border-radius: 10px;
+transition:0.7s;
+cursor:pointer;
+}
+
+button:hover{
+  background-color: #ffff00;
+}
+
+button:focus{
+  background-color: #ffff00;
+  border:2px solid #142b68;
+}
+
 
 /* Footer */
 footer {
@@ -291,8 +331,22 @@ footer {
     color: var(--off-white);
     font-size: 18px;
     text-align: center;
+    position: relative;
 }
 
 footer a {
     color: var(--off-white);
+}
+
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
 }
