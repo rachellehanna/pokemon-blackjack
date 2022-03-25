@@ -311,7 +311,6 @@ button:focus {
 }
 
 .poke-display .details-container::before {
-    /* content: '◀'; */
     content: "◄";
     position: absolute;
     left: -25px;
@@ -382,25 +381,25 @@ footer a {
 
 /* Animation */
 
-.opponent-in, .current-in {
-    animation-name: poke-slide-in; 
-    animation-duration: 1.5s;
+.current-in {
+    animation-name: current-slide-in; 
+    animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-delay: 1s;
     animation-iteration-count: 1;
+    animation-fill-mode: both; 
+    opacity: 0;
 }
 
 .opponent-in {
-    animation-direction: reverse; 
+    animation-name: opponent-slide-in; 
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both; 
+    opacity: 0;
 }
-
-/* .opponent-box-in {
-
-} */
-
-/* .current-box-in {
-
-} */
 
 /* Results Animations */
 .results {
@@ -471,16 +470,27 @@ footer a {
     }
 }
 
-@keyframes poke-slide-in {
+@keyframes current-slide-in {
     from {
-        transform: translateX(0%);
+        transform: translateX(-150%);
     }
     to {
-        transform: translateX(100%);
+        transform: translateX(0%);
+        opacity: 100; 
     }
 }
 
-@keyframes poke-slide-out {
+@keyframes opponent-slide-in {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100; 
+    }
+}
+
+@keyframes current-slide-out {
     from {
         transform: translateX(100%);
     }
