@@ -257,7 +257,6 @@ const DisplayGame = () => {
                         <PokemonDisplay
                             currentPoke={userOnePokemon}
                             opponent={userTwoPokemon}
-                            currentTotal={playerOneTotal}
                             currentHealth={pokeOneHealth}
                             opponentHealth={pokeTwoHealth}
                         />
@@ -287,7 +286,10 @@ const DisplayGame = () => {
                                 playerOneDone || activePlayer !== "player1"
                             }
                             onClick={() => {
-                                setPlayerOneDone(true);
+                                setPlayerOneDone(true); 
+								// On stand, deduct opponent health accordingly
+								let opponentHealth = 21 - playerOneTotal;
+                                setPokeTwoHealth(opponentHealth); 
                             }}
                         >
                             Stand
@@ -341,6 +343,9 @@ const DisplayGame = () => {
                             }
                             onClick={() => {
                                 setPlayerTwoDone(true);
+                                // On stand, deduct opponent health accordingly
+                                let opponentHealth = 21 - playerTwoTotal;
+                                setPokeOneHealth(opponentHealth);
                             }}
                         >
                             Stand

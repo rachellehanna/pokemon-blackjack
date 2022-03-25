@@ -1,5 +1,3 @@
-import {useState} from 'react';
-
 const PokemonDisplay = (props) => {
     // Destructure props object
     const { currentPoke, opponent, currentHealth, opponentHealth } = props;
