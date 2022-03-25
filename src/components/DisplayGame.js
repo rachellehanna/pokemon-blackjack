@@ -33,13 +33,13 @@ const DisplayGame = () => {
 
     // On round change - determine the Pokemon to be assigned to the players randomly
     useEffect(() => {
-		const getRandomInt = (max) => {
+        const getRandomInt = (max) => {
             return Math.floor(Math.random() * max + 1);
         };
 
         // Highest evolution chain index
         const maxEvoChains = 476;
-		
+
         // Make API calls until an evolution chain is found where the Pokemon can evolve
         const pickAPokemon = async (user) => {
             const pokeIndex = getRandomInt(maxEvoChains);
