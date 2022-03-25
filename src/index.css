@@ -382,6 +382,13 @@ footer a {
 
 /* Animation */
 
+/* Player Transition Animations */
+.left-slide-in {
+    animation: slideIn
+}
+
+/* Results Animations */
+
 .results {
     display: flex;
     flex-direction: column;
@@ -397,7 +404,7 @@ footer a {
     position: absolute;
     top: 0;
     left: 0;
-    animation: evolution 1s 6.5, fadeOut 6.5s;
+    animation: evolution 1s 6.5, fade-out 6.5s;
     filter: brightness(0%);
     opacity: 0;
     animation-delay: 0.5s;
@@ -410,7 +417,7 @@ footer a {
     top: 0;
     left: 0;
     opacity: 100;
-    animation: evolution 1s 6, fadeIn 6s;
+    animation: evolution 1s 6, fade-in 6s;
     animation-timing-function: ease;
 }
 
@@ -426,7 +433,7 @@ footer a {
     }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     0% {
         opacity: 0;
         filter: brightness(0%);
@@ -441,7 +448,7 @@ footer a {
     }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
     0% {
         opacity: 100;
     }
@@ -450,7 +457,7 @@ footer a {
     }
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
     from {
         transform: translateX(0%);
     }
@@ -459,7 +466,7 @@ footer a {
     }
 }
 
-@keyframes slideOut {
+@keyframes slide-out {
     from {
         transform: translateX(100%);
     }

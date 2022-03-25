@@ -23,6 +23,7 @@ const PokemonDisplay = (props) => {
                         <img
                             src={opponent.sprites.front}
                             alt={`Your opponent's pokemon, ${opponent.name}`}
+                            class="right-slide"
                         />
                     </div>
                 </div>
@@ -32,6 +33,7 @@ const PokemonDisplay = (props) => {
                         <img
                             src={currentPoke.sprites.back}
                             alt={`Your pokemon, ${currentPoke.name}`}
+                            className="left-slide"
                         />
                     </div>
                     <div className="details-container">
