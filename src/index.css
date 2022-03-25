@@ -219,7 +219,6 @@ template {
 }
 
 /* Custom Pokemon Battle Font */
-/* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
 @font-face {
     font-family: "Poke Battle";
     src: url(./battle-font/f77-pokemon-battle.ttf);
@@ -233,7 +232,6 @@ template {
     --battle-font: "Poke Battle", sans-serif;
 
     /* Colours */
-    /* We should change these variable names to be more useful once we figure out design */
     --main-yellow: #ffff00;
     --main-blue: #142b68;
     --off-white: #edfeff;
@@ -259,47 +257,7 @@ h1 {
     text-align: center;
 }
 
-/* Pokemon Display */
-.opponent-display,
-.poke-display {
-    display: flex;
-    font-family: var(--battle-font);
-    font-size: 1.5rem;
-}
-
-.details-container {
-    border: 3px solid black;
-    padding: 20px 40px;
-    width: 40%;
-    margin: 30px 30px;
-    border-radius: 20px;
-}
-
-.opponent-display img,
-.poke-display img {
-    width: 100%;
-}
-
-.opponent-display .img-container,
-.poke-display .img-container {
-    width: 15%;
-}
-
-.poke-name {
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.shiny-status {
-    text-transform: none;
-}
-
-.current-hand img {
-    padding: 0 7px;
-}
-
 /* Button styles */
-
 button {
     padding: 10px;
     width: 90px;
@@ -317,6 +275,83 @@ button:focus {
     border: 2px solid #142b68;
 }
 
+/* Pokemon Display */
+.opponent-display,
+.poke-display {
+    display: flex;
+    font-family: var(--battle-font);
+    font-size: 1.5rem;
+    justify-content: center;
+}
+
+.details-container {
+    border: 3px solid black;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(183, 183, 183, 1) 2%,
+        rgba(255, 255, 255, 1) 4%,
+        rgba(255, 255, 255, 1) 96%,
+        rgba(183, 183, 183, 1) 98%,
+        rgba(0, 0, 0, 1) 100%
+    );
+    padding: 20px 40px;
+    width: 40%;
+    margin: 30px 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.opponent-display .details-container::after {
+    content: "►";
+    position: absolute;
+    right: -27px;
+    top: 20px;
+}
+
+.poke-display .details-container::before {
+    /* content: '◀'; */
+    content: "◄";
+    position: absolute;
+    left: -25px;
+}
+
+.opponent-display img,
+.poke-display img {
+    width: 100%;
+}
+
+.opponent-display .img-container,
+.poke-display .img-container {
+    width: 15%;
+}
+
+.poke-name,
+.hit-points {
+    text-transform: uppercase;
+    margin-left: 30px;
+}
+
+.shiny-status {
+    text-transform: none;
+}
+
+/* Player Hand */
+.current-hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 50px;
+}
+
+.current-hand img {
+    padding: 0 7px;
+    width: 20%;
+}
+
 /* Footer */
 footer {
     background-color: var(--main-blue);
@@ -324,13 +359,26 @@ footer {
     width: 100%;
     bottom: 0;
     color: var(--off-white);
-    font-size: 18px;
     text-align: center;
     position: relative;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
 }
 
 footer a {
     color: var(--off-white);
+}
+
+.small-copy {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
 }
 
 /* Portrait tablet and small desktops */

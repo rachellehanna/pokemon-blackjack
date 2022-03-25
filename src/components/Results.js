@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getGameOverMessage, determineWinner } from "./helpers/blackjack";
+import { getGameOverMessage, determineWinner } from "../helpers/blackjack";
 
 const Results = (props) => {
     // Uses helper function to determine which user has won, returns

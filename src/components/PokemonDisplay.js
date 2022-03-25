@@ -1,6 +1,6 @@
 const PokemonDisplay = (props) => {
     // Destructure props object
-    const { currentPoke, opponent } = props;
+    const { currentPoke, opponent, currentHealth, opponentHealth } = props;
 
     // Only render if the data is available
     if (opponent.sprites && currentPoke.sprites) {
@@ -16,11 +16,13 @@ const PokemonDisplay = (props) => {
                                 </span>
                             ) : null}
                         </p>
+
+                        <p className="hit-points">HP: {opponentHealth} / 21</p>
                     </div>
                     <div className="img-container">
                         <img
                             src={opponent.sprites.front}
-                            alt={`A picture of your opponent, ${opponent.name}`}
+                            alt={`Your opponent's pokemon, ${opponent.name}`}
                         />
                     </div>
                 </div>
@@ -29,7 +31,7 @@ const PokemonDisplay = (props) => {
                     <div className="img-container">
                         <img
                             src={currentPoke.sprites.back}
-                            alt={`A picture of your pokemon, ${currentPoke.name}`}
+                            alt={`Your pokemon, ${currentPoke.name}`}
                         />
                     </div>
                     <div className="details-container">
@@ -41,6 +43,8 @@ const PokemonDisplay = (props) => {
                                 </span>
                             ) : null}
                         </p>
+
+                        <p className="hit-points">HP: {currentHealth} / 21</p>
                     </div>
                 </div>
             </>
