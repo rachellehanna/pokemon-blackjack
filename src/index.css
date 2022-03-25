@@ -382,11 +382,13 @@ footer a {
 /* Animation */
 
 /* Player Switching Animations */
-.current-in {
+
+/* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
+.current-in, .opponent-in {
     animation-name: current-slide-in; 
     animation-duration: 1s;
     animation-timing-function: ease-in;
-    animation-delay: 1s;
+    animation-delay: 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: both; 
     opacity: 0;
@@ -394,18 +396,12 @@ footer a {
 
 .opponent-in {
     animation-name: opponent-slide-in; 
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-delay: 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both; 
-    opacity: 0;
 }
 
 .box-in {
     animation-name: details-fade-in; 
     animation-duration: 0.8s; 
-    animation-delay: 2.2s; 
+    animation-delay: 1.5s; 
     animation-fill-mode: both; 
     opacity: 0; 
 }

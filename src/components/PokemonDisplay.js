@@ -1,6 +1,4 @@
-// Using props, create a variable that tracks when a round finishes and begins
-// Assign the sliding-in classes when a round is beginning
-// Assign the sliding-out classes when a round is ending
+// When re-rendering a component, React compares the new render with the old one and only updates what has changed - this is why the animation only runs on page load (player 1's turn)
 
 const PokemonDisplay = (props) => {
     // Destructure props object
