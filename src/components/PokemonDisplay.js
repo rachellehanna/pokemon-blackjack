@@ -4,12 +4,21 @@ const PokemonDisplay = (props) => {
     // Destructure props object
     const { currentPoke, opponent, currentHealth, opponentHealth } = props;
 
+    const animationRunner = () => {
+        let changeMe = Math.random();
+        console.log(changeMe);
+        return changeMe;
+    }
+
     // Only render if the data is available
     if (opponent.sprites && currentPoke.sprites) {
         return (
             <>
                 <div className="opponent-display">
-                    <div className="details-container box-in">
+                    <div
+                        className="details-container box-in"
+                        key={animationRunner()}
+                    >
                         <p className="poke-name">
                             {opponent.name}
                             {opponent.shiny ? (
@@ -26,6 +35,7 @@ const PokemonDisplay = (props) => {
                             src={opponent.sprites.front}
                             alt={`Your opponent's pokemon, ${opponent.name}`}
                             className="opponent-in"
+                            key={animationRunner()}
                         />
                     </div>
                 </div>
@@ -36,9 +46,13 @@ const PokemonDisplay = (props) => {
                             src={currentPoke.sprites.back}
                             alt={`Your pokemon, ${currentPoke.name}`}
                             className="current-in"
+                            key={animationRunner()}
                         />
                     </div>
-                    <div className="details-container box-in">
+                    <div
+                        className="details-container box-in"
+                        key={animationRunner()}
+                    >
                         <p className="poke-name">
                             {currentPoke.name}
                             {currentPoke.shiny ? (
