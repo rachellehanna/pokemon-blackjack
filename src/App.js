@@ -5,11 +5,11 @@ import DisplayGame from "./components/DisplayGame";
 function App() {
     return (
         <>
-        <div className="wrapper">
-            <Header />
-            <DisplayGame />
-        </div>
-        <Footer />
+            <div className="wrapper">
+                <Header />
+                <DisplayGame />
+            </div>
+            <Footer />
         </>
     );
 }

@@ -281,15 +281,40 @@ button:focus {
     display: flex;
     font-family: var(--battle-font);
     font-size: 1.5rem;
+    justify-content: center;
 }
 
 .details-container {
     border: 3px solid black;
-    background-color: white;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(183, 183, 183, 1) 2%,
+        rgba(255, 255, 255, 1) 4%,
+        rgba(255, 255, 255, 1) 96%,
+        rgba(183, 183, 183, 1) 98%,
+        rgba(0, 0, 0, 1) 100%
+    );
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
     border-radius: 20px;
+    position: relative;
+}
+
+.opponent-display .details-container::after {
+    content: "►";
+    position: absolute;
+    right: -27px;
+    top: 20px;
+}
+
+.poke-display .details-container::before {
+    /* content: '◀'; */
+    content: "◄";
+    position: absolute;
+    left: -25px;
 }
 
 .opponent-display img,
@@ -302,16 +327,29 @@ button:focus {
     width: 15%;
 }
 
-.poke-name {
+.poke-name,
+.hit-points {
     text-transform: uppercase;
+    margin-left: 30px;
 }
 
 .shiny-status {
     text-transform: none;
 }
 
+/* Player Hand */
+.current-hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 50px;
+}
+
 .current-hand img {
     padding: 0 7px;
+    width: 20%;
 }
 
 /* Footer */
@@ -324,14 +362,14 @@ footer {
     text-align: center;
     position: relative;
     padding-top: 15px;
-    padding-bottom: 5px; 
-    margin-top: 40px; 
+    padding-bottom: 5px;
+    margin-top: 40px;
 }
 
 footer p {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
 }
 
 footer a {
@@ -339,8 +377,8 @@ footer a {
 }
 
 .small-copy {
-    font-size: 0.8rem; 
-    margin-bottom: 5px; 
+    font-size: 0.8rem;
+    margin-bottom: 5px;
 }
 
 /* Portrait tablet and small desktops */

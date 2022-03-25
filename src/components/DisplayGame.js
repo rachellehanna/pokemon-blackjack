@@ -8,7 +8,6 @@ import {
 import PokemonDisplay from "./PokemonDisplay";
 import Hand from "./Hand";
 import Results from "./Results";
-import Player from "./Player";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
@@ -278,10 +277,10 @@ const DisplayGame = () => {
                                 playerOneDone || activePlayer !== "player1"
                             }
                             onClick={() => {
-                                setPlayerOneDone(true); 
-								// On stand, deduct opponent health accordingly
-								let opponentHealth = 21 - playerOneTotal;
-                                setPokeTwoHealth(opponentHealth); 
+                                setPlayerOneDone(true);
+                                // On stand, deduct opponent health accordingly
+                                let opponentHealth = 21 - playerOneTotal;
+                                setPokeTwoHealth(opponentHealth);
                             }}
                         >
                             Stand
