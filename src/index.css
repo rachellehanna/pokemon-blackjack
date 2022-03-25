@@ -219,6 +219,10 @@ template {
 }
 
 /* Custom Pokemon Battle Font */
+<<<<<<< HEAD
+=======
+/* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
+>>>>>>> 3d42c7784ca9abf0f0c7766aa2a776fb26957320
 @font-face {
     font-family: "Poke Battle";
     src: url(./battle-font/f77-pokemon-battle.ttf);
@@ -232,6 +236,10 @@ template {
     --battle-font: "Poke Battle", sans-serif;
 
     /* Colours */
+<<<<<<< HEAD
+=======
+    /* We should change these variable names to be more useful once we figure out design */
+>>>>>>> 3d42c7784ca9abf0f0c7766aa2a776fb26957320
     --main-yellow: #ffff00;
     --main-blue: #142b68;
     --off-white: #edfeff;
@@ -314,6 +322,28 @@ button:focus {
     padding: 0 7px;
 }
 
+<<<<<<< HEAD
+=======
+/* Button styles */
+
+button {
+    padding: 10px;
+    width: 90px;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffff00;
+}
+
+button:focus {
+    background-color: #ffff00;
+    border: 2px solid #142b68;
+}
+
+>>>>>>> 3d42c7784ca9abf0f0c7766aa2a776fb26957320
 /* Footer */
 footer {
     background-color: var(--main-blue);
@@ -338,11 +368,14 @@ footer a {
     color: var(--off-white);
 }
 
+<<<<<<< HEAD
 .small-copy {
     font-size: 0.8rem;
     margin-bottom: 5px;
 }
 
+=======
+>>>>>>> 3d42c7784ca9abf0f0c7766aa2a776fb26957320
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
 }

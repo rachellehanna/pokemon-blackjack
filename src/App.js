@@ -4,6 +4,7 @@ import DisplayGame from "./components/DisplayGame";
 
 function App() {
     return (
+<<<<<<< HEAD
         <>
             <div className="wrapper">
                 <Header />
@@ -11,6 +12,13 @@ function App() {
             </div>
             <Footer />
         </>
+=======
+        <div className="wrapper">
+            <Header />
+            <DisplayGame />
+            <Footer />
+        </div>
+>>>>>>> 3d42c7784ca9abf0f0c7766aa2a776fb26957320
     );
 }
 
