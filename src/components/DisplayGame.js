@@ -15,9 +15,9 @@ const DisplayGame = () => {
     const [userOnePokemon, setUserOnePokemon] = useState({});
     const [userTwoPokemon, setUserTwoPokemon] = useState({});
 
-	// Stateful variables for pokemon health
-	const [playerOneHealth, setPlayerOneHealth] = useState(21); 
-	const [playerTwoHealth, setPlayerTwoHealth] = useState(21); 
+    // Stateful variables for pokemon health
+    const [pokeOneHealth, setPokeOneHealth] = useState(21);
+    const [pokeTwoHealth, setPokeTwoHealth] = useState(21);
 
     // Number of rounds played, initialize at round 1
     const [numOfRounds, setNumOfRounds] = useState(1);
@@ -38,7 +38,7 @@ const DisplayGame = () => {
 
     // On round change - determine the Pokemon to be assigned to the players randomly
     useEffect(() => {
-		const getRandomInt = (max) => {
+        const getRandomInt = (max) => {
             return Math.floor(Math.random() * max + 1);
         };
 
@@ -191,13 +191,13 @@ const DisplayGame = () => {
             setPlayerOneDone(true);
         }
 
-		// Change opponent health based on hand total
-		if (total <= 21) {
-			let health = 21 - total; 
-			setPlayerTwoHealth(health);
-		} else {
-			setPlayerTwoHealth(21);
-		}
+        // Change opponent health based on hand total
+        if (total <= 21) {
+            let health = 21 - total;
+            setPokeTwoHealth(health);
+        } else {
+            setPokeTwoHealth(21);
+        }
     }
 
     async function handlePlayerTwoHit() {
@@ -212,9 +212,9 @@ const DisplayGame = () => {
         // Change opponent health based on hand total
         if (total <= 21) {
             let health = 21 - total;
-            setPlayerOneHealth(health);
+            setPokeOneHealth(health);
         } else {
-            setPlayerOneHealth(21);
+            setPokeOneHealth(21);
         }
     }
 
@@ -258,13 +258,18 @@ const DisplayGame = () => {
                             currentPoke={userOnePokemon}
                             opponent={userTwoPokemon}
                             currentTotal={playerOneTotal}
-                            currentHealth={playerOneHealth}
-                            opponentHealth={playerTwoHealth}
+                            currentHealth={pokeOneHealth}
+                            opponentHealth={pokeTwoHealth}
                         />
 
                         <Hand cards={playerOneHand} />
 
-                        {isPlayerOneBust && <p>BUST!</p>}
+                        {isPlayerOneBust && (
+                            <p>
+                                BUST! Your opponent's {`${userTwoPokemon.name}`}{" "}
+                                has regained their health.
+                            </p>
+                        )}
 
                         <p>Total: {playerOneTotal}</p>
 
@@ -306,13 +311,18 @@ const DisplayGame = () => {
                             currentPoke={userTwoPokemon}
                             opponent={userOnePokemon}
                             currentTotal={playerTwoTotal}
-                            currentHealth={playerTwoHealth}
-                            opponentHealth={playerOneHealth}
+                            currentHealth={pokeTwoHealth}
+                            opponentHealth={pokeOneHealth}
                         />
 
                         <Hand cards={playerTwoHand} />
 
-                        {isPlayerTwoBust && <p>BUST!</p>}
+                        {isPlayerTwoBust && (
+                            <p>
+                                BUST! Your opponent's {`${userOnePokemon.name}`}{" "}
+                                has regained their health.
+                            </p>
+                        )}
 
                         <p>Total: {playerTwoTotal}</p>
 

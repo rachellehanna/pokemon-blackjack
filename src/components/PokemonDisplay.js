@@ -1,3 +1,5 @@
+import {useState} from 'react';
+
 const PokemonDisplay = (props) => {
     // Destructure props object
     const { currentPoke, opponent, currentHealth, opponentHealth } = props;
@@ -22,7 +24,7 @@ const PokemonDisplay = (props) => {
                     <div className="img-container">
                         <img
                             src={opponent.sprites.front}
-                            alt={`Your opponent, ${opponent.name}`}
+                            alt={`Your opponent's pokemon, ${opponent.name}`}
                         />
                     </div>
                 </div>
