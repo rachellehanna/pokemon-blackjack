@@ -296,8 +296,6 @@ h1 {
 
 .current-hand img {
     padding: 0 7px;
-    width: 25%;
-    max-width: 200px;
 }
 
 /* Button styles */
@@ -371,14 +369,4 @@ footer a {
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
-    .details-container {
-        width: 55%;
-        padding: 10px 20px;
-        margin: 7px;
-    }
-
-    .opponent-display .img-container,
-    .poke-display .img-container {
-        width: 35%;
-    }
 }

@@ -3,15 +3,16 @@ import Footer from "./Footer";
 import DisplayGame from "./DisplayGame";
 
 function App() {
-  return (
-    <div className="App">
-      <div className="wrapper">
-      <Header />
-      <DisplayGame />
-      </div>
-      <Footer />
-    </div>
-  );
+    return (
+      <>
+            <div className="wrapper">
+                <Header />
+                <DisplayGame />
+            </div>
+            <Footer />
+        </>
+        
+    );
 }
 
 export default App;
