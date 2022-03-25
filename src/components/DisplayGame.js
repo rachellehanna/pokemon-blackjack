@@ -240,14 +240,6 @@ const DisplayGame = () => {
                 )
             }
 
-            {/* Testing out Player component */}
-            {/* <Player
-				currentPoke={userOnePokemon}
-				opponent={userTwoPokemon}
-				cards={playerOneHand}
-				total={playerOneTotal}
-			/> */}
-
             {
                 // Based on the active player, re-render the Pokemon facing the correct direction
                 activePlayer === "player1" ? (
