@@ -6,13 +6,18 @@ import {
 } from "../helpers/blackjack";
 
 import PokemonDisplay from "./PokemonDisplay";
-import Results from "./Results";
 import Hand from "./Hand";
+import Results from "./Results";
+import Player from "./Player";
 
 const DisplayGame = () => {
     // Variables to store Pokemon that can evolve for both users
     const [userOnePokemon, setUserOnePokemon] = useState({});
     const [userTwoPokemon, setUserTwoPokemon] = useState({});
+
+	// Stateful variables for pokemon health
+	const [playerOneHealth, setPlayerOneHealth] = useState(21); 
+	const [playerTwoHealth, setPlayerTwoHealth] = useState(21); 
 
     // Number of rounds played, initialize at round 1
     const [numOfRounds, setNumOfRounds] = useState(1);
@@ -39,7 +44,7 @@ const DisplayGame = () => {
 
         // Highest evolution chain index
         const maxEvoChains = 476;
-		
+
         // Make API calls until an evolution chain is found where the Pokemon can evolve
         const pickAPokemon = async (user) => {
             const pokeIndex = getRandomInt(maxEvoChains);
@@ -219,6 +224,14 @@ const DisplayGame = () => {
                 )
             }
 
+            {/* Testing out Player component */}
+            {/* <Player
+				currentPoke={userOnePokemon}
+				opponent={userTwoPokemon}
+				cards={playerOneHand}
+				total={playerOneTotal}
+			/> */}
+
             {
                 // Based on the active player, re-render the Pokemon facing the correct direction
                 activePlayer === "player1" ? (
@@ -228,6 +241,8 @@ const DisplayGame = () => {
                         <PokemonDisplay
                             currentPoke={userOnePokemon}
                             opponent={userTwoPokemon}
+                            currentTotal={playerOneTotal}
+							health={playerOneHealth}
                         />
 
                         <Hand cards={playerOneHand} />
@@ -273,6 +288,8 @@ const DisplayGame = () => {
                         <PokemonDisplay
                             currentPoke={userTwoPokemon}
                             opponent={userOnePokemon}
+                            currentTotal={playerTwoTotal}
+							health={playerTwoHealth}
                         />
 
                         <Hand cards={playerTwoHand} />
