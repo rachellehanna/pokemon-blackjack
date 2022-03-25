@@ -253,9 +253,6 @@ const DisplayGame = () => {
                             opponent={userTwoPokemon}
                             currentHealth={pokeOneHealth}
                             opponentHealth={pokeTwoHealth}
-                            // Testing something out...
-                            currentTotal={playerOneTotal}
-                            opponentTotal={playerTwoTotal}
                         />
 
                         <Hand cards={playerOneHand} />
@@ -309,7 +306,6 @@ const DisplayGame = () => {
                         <PokemonDisplay
                             currentPoke={userTwoPokemon}
                             opponent={userOnePokemon}
-                            currentTotal={playerTwoTotal}
                             currentHealth={pokeTwoHealth}
                             opponentHealth={pokeOneHealth}
                         />
