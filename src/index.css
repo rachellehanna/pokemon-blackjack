@@ -353,11 +353,10 @@ button:focus {
 }
 
 /* Footer */
+
 footer {
     background-color: var(--main-blue);
-    /* position:fixed; -- temporarily commenting this out because it was hiding game buttons */
     width: 100%;
-    bottom: 0;
     color: var(--off-white);
     text-align: center;
     position: relative;
@@ -383,10 +382,38 @@ footer a {
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+    .details-container {
+        border: 3px solid black;
+        padding: 20px 40px;
+        width: 55%;
+        margin: 30px 30px;
+        border-radius: 20px;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+    .details-container {
+        width: 55%;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
+
+    .current-hand img {
+        width: 50%;
+    }
+
+    .game p {
+        text-align: center;
+    }
 }
 
 /* Landscape phones and down */
