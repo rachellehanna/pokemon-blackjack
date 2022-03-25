@@ -253,6 +253,7 @@ const DisplayGame = () => {
                             opponent={userTwoPokemon}
                             currentHealth={pokeOneHealth}
                             opponentHealth={pokeTwoHealth}
+                            currentPlayer={activePlayer}
                         />
 
                         <Hand cards={playerOneHand} />
@@ -308,6 +309,7 @@ const DisplayGame = () => {
                             opponent={userOnePokemon}
                             currentHealth={pokeTwoHealth}
                             opponentHealth={pokeOneHealth}
+                            currentPlayer={activePlayer}
                         />
 
                         <Hand cards={playerTwoHand} />

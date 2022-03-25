@@ -311,7 +311,6 @@ button:focus {
 }
 
 .poke-display .details-container::before {
-    /* content: '◀'; */
     content: "◄";
     position: absolute;
     left: -25px;
@@ -382,6 +381,32 @@ footer a {
 
 /* Animation */
 
+/* Player Switching Animations */
+
+/* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
+.current-in, .opponent-in {
+    animation-name: current-slide-in; 
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0.3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both; 
+    opacity: 0;
+}
+
+.opponent-in {
+    animation-name: opponent-slide-in; 
+}
+
+.box-in {
+    animation-name: details-fade-in; 
+    animation-duration: 0.8s; 
+    animation-delay: 1.5s; 
+    animation-fill-mode: both; 
+    opacity: 0; 
+}
+
+/* Evolution Animations */
 .results {
     display: flex;
     flex-direction: column;
@@ -397,7 +422,7 @@ footer a {
     position: absolute;
     top: 0;
     left: 0;
-    animation: evolution 1s 6.5, fadeOut 6.5s;
+    animation: evolution 1s 6.5, fade-out 6.5s;
     filter: brightness(0%);
     opacity: 0;
     animation-delay: 0.5s;
@@ -410,7 +435,7 @@ footer a {
     top: 0;
     left: 0;
     opacity: 100;
-    animation: evolution 1s 6, fadeIn 6s;
+    animation: evolution 1s 6, fade-in 6s;
     animation-timing-function: ease;
 }
 
@@ -426,7 +451,7 @@ footer a {
     }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
     0% {
         opacity: 0;
         filter: brightness(0%);
@@ -441,7 +466,7 @@ footer a {
     }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
     0% {
         opacity: 100;
     }
@@ -450,16 +475,37 @@ footer a {
     }
 }
 
-@keyframes slideIn {
+@keyframes details-fade-in {
     from {
-        transform: translateX(0%);
+        opacity: 0;
     }
     to {
-        transform: translateX(100%);
+        opacity: 100; 
     }
 }
 
-@keyframes slideOut {
+@keyframes current-slide-in {
+    from {
+        transform: translateX(-150%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100; 
+    }
+}
+
+@keyframes opponent-slide-in {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100; 
+    }
+}
+
+/* Not currently using this animation */
+@keyframes slide-out {
     from {
         transform: translateX(100%);
     }
