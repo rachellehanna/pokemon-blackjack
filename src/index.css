@@ -381,6 +381,7 @@ footer a {
 
 /* Animation */
 
+/* Player Switching Animations */
 .current-in {
     animation-name: current-slide-in; 
     animation-duration: 1s;
@@ -401,7 +402,15 @@ footer a {
     opacity: 0;
 }
 
-/* Results Animations */
+.box-in {
+    animation-name: details-fade-in; 
+    animation-duration: 0.8s; 
+    animation-delay: 2.2s; 
+    animation-fill-mode: both; 
+    opacity: 0; 
+}
+
+/* Evolution Animations */
 .results {
     display: flex;
     flex-direction: column;
@@ -470,6 +479,15 @@ footer a {
     }
 }
 
+@keyframes details-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100; 
+    }
+}
+
 @keyframes current-slide-in {
     from {
         transform: translateX(-150%);
@@ -490,7 +508,8 @@ footer a {
     }
 }
 
-@keyframes current-slide-out {
+/* Not currently using this animation */
+@keyframes slide-out {
     from {
         transform: translateX(100%);
     }

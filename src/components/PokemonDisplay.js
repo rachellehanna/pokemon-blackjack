@@ -11,7 +11,7 @@ const PokemonDisplay = (props) => {
         return (
             <>
                 <div className="opponent-display">
-                    <div className="details-container">
+                    <div className="details-container box-in">
                         <p className="poke-name">
                             {opponent.name}
                             {opponent.shiny ? (
@@ -40,7 +40,7 @@ const PokemonDisplay = (props) => {
                             className="current-in"
                         />
                     </div>
-                    <div className="details-container">
+                    <div className="details-container box-in">
                         <p className="poke-name">
                             {currentPoke.name}
                             {currentPoke.shiny ? (
