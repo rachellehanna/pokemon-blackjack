@@ -179,6 +179,9 @@ const DisplayGame = () => {
         setPlayerOneDone(false);
         setPlayerTwoDone(false);
         setNumOfRounds(numOfRounds + 1);
+        // Reset player health
+        setPokeOneHealth(21);
+        setPokeTwoHealth(21);
     }
 
     async function handlePlayerOneHit() {
@@ -250,6 +253,9 @@ const DisplayGame = () => {
                             opponent={userTwoPokemon}
                             currentHealth={pokeOneHealth}
                             opponentHealth={pokeTwoHealth}
+                            // Testing something out...
+                            currentTotal={playerOneTotal}
+                            opponentTotal={playerTwoTotal}
                         />
 
                         <Hand cards={playerOneHand} />
