@@ -6,7 +6,6 @@ html {
 }
 body {
     margin: 0;
-    
 }
 article,
 aside,
@@ -114,10 +113,7 @@ input {
 button,
 select {
     text-transform: none;
-    
 }
-
-
 
 button,
 html [type="button"],
@@ -223,7 +219,7 @@ template {
 }
 
 /* Custom Pokemon Battle Font */
-    /* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
+/* I added this for fun! It might not be in line with client brief - so we can remove it if we have to :) */
 @font-face {
     font-family: "Poke Battle";
     src: url(./battle-font/f77-pokemon-battle.ttf);
@@ -237,7 +233,7 @@ template {
     --battle-font: "Poke Battle", sans-serif;
 
     /* Colours */
-        /* We should change these variable names to be more useful once we figure out design */
+    /* We should change these variable names to be more useful once we figure out design */
     --main-yellow: #ffff00;
     --main-blue: #142b68;
     --off-white: #edfeff;
@@ -249,13 +245,13 @@ html {
     font-size: 125%;
 }
 
-body{
-  background:#edfeff;
+body {
+    background: #edfeff;
 }
 
-.wrapper{
-  max-width: 1280px;
-  margin: 0 auto;
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 h1 {
@@ -276,7 +272,7 @@ h1 {
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
-    border-radius:20px;
+    border-radius: 20px;
 }
 
 .opponent-display img,
@@ -298,55 +294,91 @@ h1 {
     text-transform: none;
 }
 
-.current-hand img{
-  padding:0 7px;
+.current-hand img {
+    padding: 0 7px;
+    width: 25%;
+    max-width: 200px;
 }
 
 /* Button styles */
 
 button {
-padding:10px;
-width:90px;
-border-radius: 10px;
-transition:0.7s;
-cursor:pointer;
+    padding: 10px;
+    width: 90px;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
 }
 
-button:hover{
-  background-color: #ffff00;
+button:hover {
+    background-color: #ffff00;
 }
 
-button:focus{
-  background-color: #ffff00;
-  border:2px solid #142b68;
+button:focus {
+    background-color: #ffff00;
+    border: 2px solid #142b68;
 }
-
 
 /* Footer */
+
 footer {
     background-color: var(--main-blue);
-    /* position:fixed; -- temporarily commenting this out because it was hiding game buttons */
     width: 100%;
-    bottom: 0;
     color: var(--off-white);
     font-size: 18px;
     text-align: center;
-    position: relative;
 }
 
 footer a {
     color: var(--off-white);
 }
 
-
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
+    .details-container {
+        border: 3px solid black;
+        padding: 20px 40px;
+        width: 55%;
+        margin: 30px 30px;
+        border-radius: 20px;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
+    .details-container {
+        width: 55%;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
+
+    .current-hand img {
+        width: 50%;
+    }
+
+    .game p {
+        text-align: center;
+    }
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+    .details-container {
+        width: 55%;
+        padding: 10px 20px;
+        margin: 7px;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 35%;
+    }
 }

@@ -4,9 +4,11 @@ import DisplayGame from "./DisplayGame";
 
 function App() {
   return (
-    <div className="wrapper">
+    <div className="App">
+      <div className="wrapper">
       <Header />
       <DisplayGame />
+      </div>
       <Footer />
     </div>
   );
