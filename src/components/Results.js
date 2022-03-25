@@ -36,14 +36,20 @@ const Results = (props) => {
                         // If determined winner is not player1, player2, or there is no tie
                         determinedWinner === "player1" ||
                         determinedWinner === "player2" ? (
-                            <div className="winnerDisplay">
+                            <div className="winner-display">
                                 <p>
                                     Your{" "}
                                     {`${gameWinner.name} has evolved into ${gameWinner.evoName}!`}
                                 </p>
                                 <img
+                                    src={`${gameWinner.sprites.front}`}
+                                    alt=""
+                                    className="pre-evolution"
+                                />
+                                <img
                                     src={`${gameWinner.evoSprites.front}`}
                                     alt=""
+                                    className="post-evolution"
                                 />
                             </div>
                         ) : null
