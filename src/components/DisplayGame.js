@@ -190,6 +190,14 @@ const DisplayGame = () => {
         if (total > 21) {
             setPlayerOneDone(true);
         }
+
+		// Change opponent health based on hand total
+		if (total <= 21) {
+			let health = 21 - total; 
+			setPlayerTwoHealth(health);
+		} else {
+			setPlayerTwoHealth(21);
+		}
     }
 
     async function handlePlayerTwoHit() {
@@ -199,6 +207,14 @@ const DisplayGame = () => {
         setPlayerTwoHand(newHand);
         if (total > 21) {
             setPlayerTwoDone(true);
+        }
+
+        // Change opponent health based on hand total
+        if (total <= 21) {
+            let health = 21 - total;
+            setPlayerOneHealth(health);
+        } else {
+            setPlayerOneHealth(21);
         }
     }
 
@@ -242,7 +258,8 @@ const DisplayGame = () => {
                             currentPoke={userOnePokemon}
                             opponent={userTwoPokemon}
                             currentTotal={playerOneTotal}
-							health={playerOneHealth}
+                            currentHealth={playerOneHealth}
+                            opponentHealth={playerTwoHealth}
                         />
 
                         <Hand cards={playerOneHand} />
@@ -289,7 +306,8 @@ const DisplayGame = () => {
                             currentPoke={userTwoPokemon}
                             opponent={userOnePokemon}
                             currentTotal={playerTwoTotal}
-							health={playerTwoHealth}
+                            currentHealth={playerTwoHealth}
+                            opponentHealth={playerOneHealth}
                         />
 
                         <Hand cards={playerTwoHand} />
