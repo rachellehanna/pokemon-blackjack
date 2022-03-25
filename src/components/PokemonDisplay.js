@@ -1,3 +1,7 @@
+// Using props, create a variable that tracks when a round finishes and begins
+// Assign the sliding-in classes when a round is beginning
+// Assign the sliding-out classes when a round is ending
+
 const PokemonDisplay = (props) => {
     // Destructure props object
     const { currentPoke, opponent, currentHealth, opponentHealth } = props;
@@ -7,7 +11,7 @@ const PokemonDisplay = (props) => {
         return (
             <>
                 <div className="opponent-display">
-                    <div className="details-container">
+                    <div className="details-container opponent-box-in">
                         <p className="poke-name">
                             {opponent.name}
                             {opponent.shiny ? (
@@ -23,7 +27,7 @@ const PokemonDisplay = (props) => {
                         <img
                             src={opponent.sprites.front}
                             alt={`Your opponent's pokemon, ${opponent.name}`}
-                            class="right-slide"
+                            className="opponent-in"
                         />
                     </div>
                 </div>
@@ -33,10 +37,10 @@ const PokemonDisplay = (props) => {
                         <img
                             src={currentPoke.sprites.back}
                             alt={`Your pokemon, ${currentPoke.name}`}
-                            className="left-slide"
+                            className="current-in"
                         />
                     </div>
-                    <div className="details-container">
+                    <div className="details-container current-box-in">
                         <p className="poke-name">
                             {currentPoke.name}
                             {currentPoke.shiny ? (

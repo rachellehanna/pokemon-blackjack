@@ -382,13 +382,27 @@ footer a {
 
 /* Animation */
 
-/* Player Transition Animations */
-.left-slide-in {
-    animation: slideIn
+.opponent-in, .current-in {
+    animation-name: poke-slide-in; 
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
 }
 
-/* Results Animations */
+.opponent-in {
+    animation-direction: reverse; 
+}
 
+/* .opponent-box-in {
+
+} */
+
+/* .current-box-in {
+
+} */
+
+/* Results Animations */
 .results {
     display: flex;
     flex-direction: column;
@@ -457,7 +471,7 @@ footer a {
     }
 }
 
-@keyframes slide-in {
+@keyframes poke-slide-in {
     from {
         transform: translateX(0%);
     }
@@ -466,7 +480,7 @@ footer a {
     }
 }
 
-@keyframes slide-out {
+@keyframes poke-slide-out {
     from {
         transform: translateX(100%);
     }
