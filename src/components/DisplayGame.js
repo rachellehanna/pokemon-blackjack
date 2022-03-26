@@ -224,23 +224,32 @@ const DisplayGame = () => {
         startGame();
     }, []);
 
+    if (playerOneDone && playerTwoDone) {
+        return (
+            <section className="game">
+                <Results
+                    playerOneTotal={playerOneTotal}
+                    playerTwoTotal={playerTwoTotal}
+                    userOnePokemon={userOnePokemon}
+                    userTwoPokemon={userTwoPokemon}
+                />
+                <div>
+                    <button
+                        onClick={() => {
+                            resetGame();
+                            startGame();
+                        }}
+                    >
+                        Play Again
+                    </button>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="game">
             {error ? <p>Oh no! There was an error!</p> : null}
-
-            {
-                // If both players are done, then display Results screen
-                playerOneDone && playerTwoDone && (
-                    <>
-                        <Results
-                            playerOneTotal={playerOneTotal}
-                            playerTwoTotal={playerTwoTotal}
-                            userOnePokemon={userOnePokemon}
-                            userTwoPokemon={userTwoPokemon}
-                        />
-                    </>
-                )
-            }
 
             {
                 // Based on the active player, re-render the Pokemon facing the correct direction
@@ -358,22 +367,6 @@ const DisplayGame = () => {
                     </>
                 )
             }
-
-            {
-                // If both players are done, then display reset button
-            }
-            {playerOneDone && playerTwoDone && (
-                <div>
-                    <button
-                        onClick={() => {
-                            resetGame();
-                            startGame();
-                        }}
-                    >
-                        Play Again
-                    </button>
-                </div>
-            )}
         </section>
     );
 };
