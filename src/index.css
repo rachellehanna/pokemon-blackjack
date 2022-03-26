@@ -400,10 +400,10 @@ footer a {
     border: 20px ridge var(--modal-border);
     border-radius: 0.25rem;
     position: absolute;
-    top: 10vh;
-    bottom: 10vh;
-    left: 20vw;
-    right: 20vw;
+    top: 5vh;
+    bottom: 5vh;
+    left: 10vw;
+    right: 10vw;
     padding-bottom: 2rem;
     outline: none;
     display: flex;
@@ -416,11 +416,11 @@ footer a {
 .modal-title,
 .welcome p,
 #playButton {
-    font-size: 2rem;
-    letter-spacing: 0.5rem;
     font-family: var(--battle-font);
-    line-height: 2.5rem;
     font-weight: 1000;
+    font-size: 1.5rem;
+    letter-spacing: 0.35rem;
+    line-height: 2.25rem;
 }
 
 .modal-title {
@@ -433,6 +433,7 @@ footer a {
     background-color: var(--modal-text-background);
     border: 10px ridge var(--modal-text);
     border-radius: 0.25rem;
+    padding: 0.5rem;
     width: 90%;
     text-align: center;
 }
@@ -478,15 +479,6 @@ footer a {
         left: 2vw;
         right: 2vw;
     }
-
-    .modal-content,
-    .modalTitle,
-    .welcome p,
-    #playButton {
-        font-size: 1.5rem;
-        letter-spacing: 0.35rem;
-        line-height: 2.25rem;
-    }
 }
 
 /* Landscape phone to portrait tablet */
@@ -506,6 +498,15 @@ footer a {
 
     .game p {
         text-align: center;
+    }
+
+    .modal-content,
+    .modalTitle,
+    .welcome p,
+    #playButton {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+        line-height: 1.25rem;
     }
 }
 
