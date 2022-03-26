@@ -22,7 +22,15 @@ function App() {
                 <h1 className="modal-title">Hello Friends !</h1>
 
                 <div className="welcome">
-                    <p>This is Pokemon Blackjack where we battle with cards.</p>
+                    <p>
+                        This is Pokemon Blackjack where two players can battle
+                        with cards.
+                    </p>
+                    <p>
+                        The player with a card total closest to 21 wins, but if
+                        you go over 21, you lose. Win the game to evolve your
+                        Pokemon!
+                    </p>
                     <p>Press play to start.</p>
 
                     <button
