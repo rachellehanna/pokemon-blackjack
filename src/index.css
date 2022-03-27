@@ -235,6 +235,17 @@ template {
     --main-yellow: #ffff00;
     --main-blue: #142b68;
     --off-white: #edfeff;
+
+    /* Modal Colours */
+    --modal-gradient-top: #a0d8ee;
+    --modal-gradient-bottom: #d8eea0;
+    --modal-border: #4486d1;
+    --modal-title: #f5deb3;
+    --modal-text: #4c6558;
+    --modal-text-background: #f8f8da;
+    --modal-text-shadow: #ee82ee;
+    --modal-play-button-text: #3daee9;
+    --modal-play-button-hover: #808080;
 }
 
 /* Typography */
@@ -258,7 +269,7 @@ h1 {
 }
 
 /* Button styles */
-button {
+.game button {
     padding: 10px;
     width: 90px;
     border-radius: 10px;
@@ -266,11 +277,11 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.game button:hover {
     background-color: #ffff00;
 }
 
-button:focus {
+.game button:focus {
     background-color: #ffff00;
     border: 2px solid #142b68;
 }
@@ -380,6 +391,75 @@ footer a {
     margin-bottom: 5px;
 }
 
+/*Modal styles*/
+.modal-content {
+    background: linear-gradient(
+        var(--modal-gradient-top),
+        var(--modal-gradient-bottom)
+    );
+    border: 20px ridge var(--modal-border);
+    border-radius: 0.25rem;
+    position: absolute;
+    top: 5vh;
+    bottom: 5vh;
+    left: 10vw;
+    right: 10vw;
+    padding-bottom: 2rem;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content,
+.modal-title,
+.welcome p,
+#playButton {
+    font-family: var(--battle-font);
+    font-weight: 1000;
+    font-size: 1.5rem;
+    letter-spacing: 0.35rem;
+    line-height: 2.25rem;
+}
+
+.modal-title {
+    color: var(--modal-title);
+    font-weight: 1000;
+    text-shadow: 5px 0 var(--modal-text-shadow);
+}
+
+.welcome {
+    background-color: var(--modal-text-background);
+    border: 10px ridge var(--modal-text);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: 90%;
+    text-align: center;
+}
+
+#playButton {
+    color: var(--modal-play-button-text);
+    text-shadow: 1px 1px 3px var(--modal-text-shadow);
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding-bottom: 1rem;
+}
+
+#playButton:enabled:hover {
+    color: var(--modal-play-button-hover);
+}
+
+.welcome p {
+    text-transform: uppercase;
+    color: var(--modal-text);
+    text-shadow: 1px 1px 3px var(--modal-text-shadow);
+    padding: 1rem 0;
+    margin: 0;
+}
+
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
     .details-container {
@@ -393,6 +473,11 @@ footer a {
     .opponent-display .img-container,
     .poke-display .img-container {
         width: 25%;
+    }
+
+    .modal-content {
+        left: 2vw;
+        right: 2vw;
     }
 }
 
@@ -413,6 +498,15 @@ footer a {
 
     .game p {
         text-align: center;
+    }
+
+    .modal-content,
+    .modalTitle,
+    .welcome p,
+    #playButton {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+        line-height: 1.25rem;
     }
 }
 
