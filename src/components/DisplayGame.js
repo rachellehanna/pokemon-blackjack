@@ -226,7 +226,7 @@ const DisplayGame = () => {
 
     if (playerOneDone && playerTwoDone) {
         return (
-            <section className="game">
+            <section className="game results">
                 <Results
                     playerOneTotal={playerOneTotal}
                     playerTwoTotal={playerTwoTotal}

@@ -26,7 +26,7 @@ const Results = (props) => {
 
     if (gameWinner.evoSprites) {
         return (
-            <section className="results">
+            <>
                 <div className="results-message">
                     <h2>Good game!</h2>
                     <p>{resultMessage}</p>
@@ -55,7 +55,7 @@ const Results = (props) => {
                         ) : null
                     }
                 </div>
-            </section>
+            </>
         );
     } else if (Object.keys(gameWinner).length === 0) {
         return (

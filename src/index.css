@@ -260,7 +260,6 @@ h1 {
 /* Button styles */
 button {
     padding: 10px;
-    width: 90px;
     border-radius: 10px;
     transition: 0.7s;
     cursor: pointer;
@@ -349,6 +348,13 @@ button:focus {
 .current-hand img {
     padding: 0 7px;
     width: 20%;
+    animation: details-fade-in 1s;
+}
+
+/* Results */
+
+.game {
+    text-align: center;
 }
 
 /* Footer */
@@ -359,6 +365,7 @@ footer {
     color: var(--off-white);
     text-align: center;
     position: relative;
+    bottom: 0;
     padding-top: 15px;
     padding-bottom: 5px;
     margin-top: 40px;
@@ -384,26 +391,27 @@ footer a {
 /* Player Switching Animations */
 
 /* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
-.current-in, .opponent-in {
-    animation-name: current-slide-in; 
+.current-in,
+.opponent-in {
+    animation-name: current-slide-in;
     animation-duration: 1s;
     animation-timing-function: ease-in;
     animation-delay: 0.3s;
     animation-iteration-count: 1;
-    animation-fill-mode: both; 
+    animation-fill-mode: both;
     opacity: 0;
 }
 
 .opponent-in {
-    animation-name: opponent-slide-in; 
+    animation-name: opponent-slide-in;
 }
 
 .box-in {
-    animation-name: details-fade-in; 
-    animation-duration: 0.8s; 
-    animation-delay: 1.5s; 
-    animation-fill-mode: both; 
-    opacity: 0; 
+    animation-name: details-fade-in;
+    animation-duration: 0.8s;
+    animation-delay: 1.5s;
+    animation-fill-mode: both;
+    opacity: 0;
 }
 
 /* Evolution Animations */
@@ -415,10 +423,11 @@ footer a {
 
 .winner-display {
     position: relative;
+    height: 400px;
 }
 
 .pre-evolution {
-    height: 300px;
+    height: 400px;
     position: absolute;
     top: 0;
     left: 0;
@@ -430,7 +439,7 @@ footer a {
 }
 
 .post-evolution {
-    height: 300px;
+    height: 400px;
     position: absolute;
     top: 0;
     left: 0;
@@ -480,7 +489,7 @@ footer a {
         opacity: 0;
     }
     to {
-        opacity: 100; 
+        opacity: 100;
     }
 }
 
@@ -490,7 +499,7 @@ footer a {
     }
     to {
         transform: translateX(0%);
-        opacity: 100; 
+        opacity: 100;
     }
 }
 
@@ -500,7 +509,7 @@ footer a {
     }
     to {
         transform: translateX(0%);
-        opacity: 100; 
+        opacity: 100;
     }
 }
 
