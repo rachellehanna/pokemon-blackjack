@@ -39,7 +39,14 @@ const Results = (props) => {
                             <div className="winner-display">
                                 <p>
                                     Your{" "}
-                                    {`${gameWinner.name} has evolved into ${gameWinner.evoName}!`}
+                                    <span className="pokemon-name">
+                                        {gameWinner.name}
+                                    </span>{" "}
+                                    has evolved into{" "}
+                                    <span className="pokemon-name">
+                                        {gameWinner.evoName}
+                                    </span>
+                                    !
                                 </p>
                                 <img
                                     src={`${gameWinner.sprites.front}`}

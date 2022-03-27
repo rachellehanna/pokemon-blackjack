@@ -351,12 +351,6 @@ button:focus {
     animation: details-fade-in 1s;
 }
 
-/* Results */
-
-.game {
-    text-align: center;
-}
-
 /* Footer */
 
 footer {
@@ -419,11 +413,16 @@ footer a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .winner-display {
     position: relative;
     height: 400px;
+}
+
+.pokemon-name {
+    text-transform: capitalize;
 }
 
 .pre-evolution {
