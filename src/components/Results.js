@@ -26,7 +26,7 @@ const Results = (props) => {
 
     if (gameWinner.evoSprites) {
         return (
-            <section className="results">
+            <>
                 <div className="results-message">
                     <h2>Good game!</h2>
                     <p>{resultMessage}</p>
@@ -36,20 +36,33 @@ const Results = (props) => {
                         // If determined winner is not player1, player2, or there is no tie
                         determinedWinner === "player1" ||
                         determinedWinner === "player2" ? (
-                            <div className="winnerDisplay">
+                            <div className="winner-display">
                                 <p>
                                     Your{" "}
-                                    {`${gameWinner.name} has evolved into ${gameWinner.evoName}!`}
+                                    <span className="pokemon-name">
+                                        {gameWinner.name}
+                                    </span>{" "}
+                                    has evolved into{" "}
+                                    <span className="pokemon-name">
+                                        {gameWinner.evoName}
+                                    </span>
+                                    !
                                 </p>
+                                <img
+                                    src={`${gameWinner.sprites.front}`}
+                                    alt=""
+                                    className="pre-evolution"
+                                />
                                 <img
                                     src={`${gameWinner.evoSprites.front}`}
                                     alt=""
+                                    className="post-evolution"
                                 />
                             </div>
                         ) : null
                     }
                 </div>
-            </section>
+            </>
         );
     } else if (Object.keys(gameWinner).length === 0) {
         return (
