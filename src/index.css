@@ -359,7 +359,6 @@ h1 {
 .current-hand img {
     padding: 0 7px;
     width: 20%;
-    animation: details-fade-in 1s;
 }
 
 /* Footer */
@@ -389,34 +388,6 @@ footer a {
 .small-copy {
     font-size: 0.8rem;
     margin-bottom: 5px;
-}
-
-/* Animation */
-
-/* Player Switching Animations */
-
-/* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
-.current-in,
-.opponent-in {
-    animation-name: current-slide-in;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-delay: 0.3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    opacity: 0;
-}
-
-.opponent-in {
-    animation-name: opponent-slide-in;
-}
-
-.box-in {
-    animation-name: details-fade-in;
-    animation-duration: 0.8s;
-    animation-delay: 1.5s;
-    animation-fill-mode: both;
-    opacity: 0;
 }
 
 /*Modal styles*/
@@ -489,43 +460,6 @@ footer a {
 }
 
 /* Evolution Animations */
-.results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.winner-display {
-    position: relative;
-    height: 400px;
-}
-
-.pokemon-name {
-    text-transform: capitalize;
-}
-
-.pre-evolution {
-    height: 400px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: evolution 1s 6.5, fade-out 6.5s;
-    filter: brightness(0%);
-    opacity: 0;
-    animation-delay: 0.5s;
-    animation-timing-function: ease;
-}
-
-.post-evolution {
-    height: 400px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 100;
-    animation: evolution 1s 6, fade-in 6s;
-    animation-timing-function: ease;
-}
 
 @keyframes evolution {
     0% {
@@ -592,13 +526,82 @@ footer a {
     }
 }
 
-/* Not currently using this animation */
-@keyframes slide-out {
-    from {
-        transform: translateX(100%);
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.winner-display {
+    position: relative;
+    height: 400px;
+}
+
+.pokemon-name {
+    text-transform: capitalize;
+}
+
+.pre-evolution {
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation: none;
+}
+
+.post-evolution {
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 100;
+    animation: none;
+}
+
+/* Animation */
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Player Switching Animations */
+    /* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
+    .pre-evolution {
+        animation: evolution 1s 6.5, fade-out 6.5s;
+        filter: brightness(0%);
+        animation-delay: 0.5s;
+        animation-timing-function: ease;
     }
-    to {
-        transform: translateX(0%);
+
+    .post-evolution {
+        animation: evolution 1s 6, fade-in 6s;
+        animation-timing-function: ease;
+    }
+
+    .current-in,
+    .opponent-in {
+        animation-name: current-slide-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        animation-delay: 0.3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+        opacity: 0;
+    }
+
+    .opponent-in {
+        animation-name: opponent-slide-in;
+    }
+
+    .box-in {
+        animation-name: details-fade-in;
+        animation-duration: 0.8s;
+        animation-delay: 1.5s;
+        animation-fill-mode: both;
+        opacity: 0;
+    }
+
+    .current-hand img {
+        animation: details-fade-in 1s;
     }
 }
 
