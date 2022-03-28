@@ -564,7 +564,6 @@ footer a {
 
 @media (prefers-reduced-motion: no-preference) {
     /* Player Switching Animations */
-    /* note from Allison: I know this section could be shorter but the animation shorthand overwhelms me - feel free to refactor if you want*/
     .pre-evolution {
         animation: evolution 1s 6.5, fade-out 6.5s;
         filter: brightness(0%);

@@ -10,9 +10,7 @@ const PokemonDisplay = (props) => {
         currentPlayer,
     } = props;
 
-    // When re-rendering a component, React compares the new render with the old one and only updates what has changed - this is why the animation would initially only run on page load (player 1's turn)
-
-    // This useEffect gets a random decimal and assigns it as a key to the elements we need the animation to run on again. Since its value changes, React will re-render it along with the animation.
+    // This useEffect gets a random decimal and assigns it as a key to the elements we need the animation to run on again. Since its value changes, React will re-render it along with the animation on player change.
     const [newKey, setNewKey] = useState(0);
 
     useEffect(() => {
