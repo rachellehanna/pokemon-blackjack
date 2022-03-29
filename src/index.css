@@ -1,13 +1,711 @@
+/* Setup Styles */
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+article,
+aside,
+footer,
+header,
+nav,
+section {
+    display: block;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+figcaption,
+figure,
+main {
+    display: block;
+}
+figure {
+    margin: 1em 40px;
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+}
+pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+a {
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+}
+b,
+strong {
+    font-weight: inherit;
+}
+b,
+strong {
+    font-weight: bolder;
+}
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+dfn {
+    font-style: italic;
+}
+mark {
+    background-color: #ff0;
+    color: #000;
+}
+small {
+    font-size: 80%;
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sub {
+    bottom: -0.25em;
+}
+sup {
+    top: -0.5em;
+}
+audio,
+video {
+    display: inline-block;
+}
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+img {
+    border-style: none;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+button,
+input {
+    overflow: visible;
+}
+button,
+select {
+    text-transform: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+}
+progress {
+    display: inline-block;
+    vertical-align: baseline;
+}
+textarea {
+    overflow: auto;
+}
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+}
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+details,
+menu {
+    display: block;
+}
+summary {
+    display: list-item;
+}
+canvas {
+    display: inline-block;
+}
+template {
+    display: none;
+}
+[hidden] {
+    display: none;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* Custom Pokemon Battle Font */
+@font-face {
+    font-family: "Poke Battle";
+    src: url(./battle-font/f77-pokemon-battle.ttf);
+}
+
+/* Variables */
+:root {
+    /* Fonts */
+    --heading-font: "Carter One", cursive;
+    --body-font: "Montserrat", sans-serif;
+    --battle-font: "Poke Battle", sans-serif;
+
+    /* Colours */
+    --main-yellow: #ffff00;
+    --main-blue: #142b68;
+    --main-red: #ce0a0a;
+    --off-white: #edfeff;
+    --quaternary: #eab34d;
+    --display-background: #0d501a;
+    --display-background-second: #20ee31;
+    --border-display: #dbf10c;
+    --details-background: #f8f8da;
+    --details-shadow: #4c6558;
+    --details-border: #555252;
+
+    /* Modal Colours */
+    --quinary: #3daee9;
+    --modal-border: #080cfc;
+    --modal-play-button-hover: #fc5a29;
+}
+
+/* Typography */
+html {
+    font-family: var(--body-font);
+    font-size: 125%;
+}
+
+body {
+    background: var(--main-blue);
+    color: var(--quaternary);
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.header-blackjack {
+    color: var(--quinary);
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    font-family: "Times New Roman", Times, serif;
+}
+.header-pokemon {
+    color: var(--main-yellow);
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin: 0;
+}
+
+.player {
+    color: var(--quaternary);
+    font-weight: 1000;
+    font-size: 1.5rem;
+}
+
+.total {
+    color: var(--main-red);
+}
+
+.game p {
+    display: inline-block;
+    font-family: var(--battle-font);
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+}
+
+/* Button styles */
+.game button {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: 0.7s;
+    cursor: pointer;
+    font-family: var(--battle-font);
+    margin-left: 1rem;
+}
+
+.game button:hover {
+    background-color: var(--main-yellow);
+}
+
+.game button:focus {
+    background-color: var(--main-yellow);
+    border: 2px solid var(--main-blue);
+}
+
+/* Pokemon Display */
+.pokemon-display {
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--display-background),
+        var(--display-background-second) 5px
+    );
+    border-radius: 1rem;
+    border: solid 15px var(--border-display);
+    padding: 2rem 0;
+    color: black;
+}
+
+.opponent-display,
+.poke-display {
+    display: flex;
+    font-family: var(--battle-font);
+    font-size: 1.5rem;
+    justify-content: center;
+}
+
+.details-container {
+    border: 6px solid var(--details-border);
+    background: var(--details-background);
+    padding: 20px 40px;
+    width: 40%;
+    margin: 30px 30px;
+    border-radius: 25px 6px;
+    box-shadow: 5px 10px 10px var(--details-shadow);
+    position: relative;
+}
+
+.opponent-display .details-container::after {
+    content: "►";
+    position: absolute;
+    right: -35px;
+    top: 20px;
+    color: var(--border-display);
+}
+
+.poke-display .details-container::before {
+    content: "◄";
+    position: absolute;
+    left: -35px;
+    color: var(--border-display);
+}
+
+.opponent-display img,
+.poke-display img {
+    width: 100%;
+}
+
+.opponent-display .img-container,
+.poke-display .img-container {
+    width: 15%;
+}
+
+.poke-name,
+.hit-points {
+    text-transform: uppercase;
+    margin-left: 30px;
+}
+
+.shiny-status {
+    text-transform: none;
+}
+
+/* Player Hand */
+.current-hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+}
+
+.current-hand img {
+    padding: 0 7px;
+    width: 20%;
+    border: solid 5px var(--main-yellow);
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+    padding: 1rem;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 1rem;
+}
+
+footer p {
+    color: var(--off-white);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.small-copy {
+    font-size: 0.5rem;
+    margin: 0.2rem;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--main-yellow);
+}
+
+/*Modal styles*/
+.modal-content {
+    background: var(--main-blue);
+    border: 20px ridge var(--modal-border);
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 5vh;
+    bottom: 5vh;
+    left: 10vw;
+    right: 10vw;
+    padding-bottom: 2rem;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content,
+.modal-title,
+.welcome p,
+#playButton {
+    font-family: var(--battle-font);
+    font-weight: 1000;
+    font-size: 2rem;
+    letter-spacing: 0.35rem;
+    line-height: 2rem;
+}
+
+.welcome {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 90%;
+}
+
+.welcome p {
+    text-transform: uppercase;
+    color: var(--off-white);
+    padding: 1rem 3rem;
+    margin: 0;
+}
+
+#playButton {
+    color: var(--quinary);
+    text-shadow: 1px 1px 3px var(--main-yellow);
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 0 1rem 3rem;
+}
+
+#playButton:enabled:hover {
+    color: var(--modal-play-button-hover);
+}
+
+#playButton:enabled:focus {
+    color: var(--modal-play-button-hover);
+    outline: none;
+}
+
+/* Evolution Animations */
+
+@keyframes evolution {
+    0% {
+        transform: scale(100%);
+    }
+    50% {
+        transform: scale(80%);
+    }
+    100% {
+        transform: scale(100%);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        filter: brightness(0%);
+    }
+    75% {
+        opacity: 80;
+        filter: brightness(0%);
+    }
+    100% {
+        opacity: 100;
+        filter: brightness(100%);
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 100;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes details-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+@keyframes current-slide-in {
+    from {
+        transform: translateX(-150%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100;
+    }
+}
+
+@keyframes opponent-slide-in {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 100;
+    }
+}
+
+.results {
+    display: flex;
+    height: 95vh;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.winner-display {
+    position: relative;
+    height: 400px;
+}
+
+.pokemon-name {
+    text-transform: capitalize;
+}
+
+.pre-evolution {
+    opacity: 0;
+}
+
+.post-evolution {
+    opacity: 1;
+}
+
+.pre-evolution,
+.post-evolution {
+    animation: none;
+    margin-top: 100px;
+    height: 300px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+/* Animation */
+
+@media (prefers-reduced-motion: no-preference) {
+    /* Player Switching Animations */
+    .pre-evolution {
+        animation: evolution 1s 6.5, fade-out 6.5s;
+        filter: brightness(0%);
+        animation-delay: 0.5s;
+        animation-timing-function: ease;
+    }
+
+    .post-evolution {
+        animation: evolution 1s 6, fade-in 6s;
+        animation-timing-function: ease;
+    }
+
+    .current-in,
+    .opponent-in {
+        animation-name: current-slide-in;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+        animation-delay: 0.3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
+        opacity: 0;
+    }
+
+    .opponent-in {
+        animation-name: opponent-slide-in;
+    }
+
+    .box-in {
+        animation-name: details-fade-in;
+        animation-duration: 0.8s;
+        animation-delay: 1.5s;
+        animation-fill-mode: both;
+        opacity: 0;
+    }
+
+    .current-hand img {
+        animation: details-fade-in 1s;
+    }
+}
+
+/* Portrait tablet and small desktops */
+@media (max-width: 940px) {
+    .details-container {
+        border: 3px solid black;
+        padding: 20px 40px;
+        width: 55%;
+        margin: 30px 30px;
+        border-radius: 20px;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
+
+    .modal-content {
+        left: 2vw;
+        right: 2vw;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+    .details-container {
+        width: 55%;
+    }
+
+    .opponent-display .img-container,
+    .poke-display .img-container {
+        width: 25%;
+    }
+
+    .current-hand img {
+        width: 50%;
+    }
+
+    .game p {
+        text-align: center;
+    }
+
+    .modal-content,
+    .modalTitle,
+    .welcome p,
+    #playButton {
+        font-size: 1rem;
+        letter-spacing: 0.15rem;
+        line-height: 1.25rem;
+    }
+
+    .header-pokemon {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+
+    .header-blackjack {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
 }
