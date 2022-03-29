@@ -492,6 +492,11 @@ footer a:hover {
     color: var(--modal-play-button-hover);
 }
 
+#playButton:enabled:focus {
+    color: var(--modal-play-button-hover);
+    outline: none;
+}
+
 /* Evolution Animations */
 
 @keyframes evolution {
