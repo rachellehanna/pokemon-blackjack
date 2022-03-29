@@ -255,7 +255,7 @@ const DisplayGame = () => {
                 // Based on the active player, re-render the Pokemon facing the correct direction
                 activePlayer === "player1" ? (
                     <>
-                        <p>Player One's Turn!</p>
+                        <p className="player">Player One's Turn!</p>
 
                         <PokemonDisplay
                             currentPoke={userOnePokemon}
@@ -274,7 +274,7 @@ const DisplayGame = () => {
                             </p>
                         )}
 
-                        <p>Total: {playerOneTotal}</p>
+                        <p className="total">Total: {playerOneTotal}</p>
 
                         <button
                             disabled={
@@ -311,7 +311,7 @@ const DisplayGame = () => {
                     </>
                 ) : (
                     <>
-                        <p>Player Two's Turn!</p>
+                        <p className="player">Player Two's Turn!</p>
 
                         <PokemonDisplay
                             currentPoke={userTwoPokemon}
@@ -330,7 +330,7 @@ const DisplayGame = () => {
                             </p>
                         )}
 
-                        <p>Total: {playerTwoTotal}</p>
+                        <p className="total">Total: {playerTwoTotal}</p>
 
                         <button
                             disabled={

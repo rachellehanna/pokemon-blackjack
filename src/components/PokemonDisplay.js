@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const PokemonDisplay = (props) => {
     // Destructure props object
@@ -14,14 +14,14 @@ const PokemonDisplay = (props) => {
     const [newKey, setNewKey] = useState(0);
 
     useEffect(() => {
-        setNewKey(Math.random()); 
-    // Only change the key value when currentPlayer changes
+        setNewKey(Math.random());
+        // Only change the key value when currentPlayer changes
     }, [currentPlayer]);
 
     // Only render if the data is available
     if (opponent.sprites && currentPoke.sprites) {
         return (
-            <>
+            <div className="pokemon-display">
                 <div className="opponent-display">
                     <div className="details-container box-in" key={newKey}>
                         <p className="poke-name">
@@ -69,7 +69,7 @@ const PokemonDisplay = (props) => {
                         <p className="hit-points">HP: {currentHealth} / 21</p>
                     </div>
                 </div>
-            </>
+            </div>
         );
     } else {
         return <h2>Loading...</h2>;
