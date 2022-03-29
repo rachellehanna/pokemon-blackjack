@@ -234,18 +234,20 @@ template {
     /* Colours */
     --main-yellow: #ffff00;
     --main-blue: #142b68;
+    --main-red: #ce0a0a;
     --off-white: #edfeff;
+    --quaternary: #eab34d;
+    --display-background: #0d501a;
+    --display-background-second: #20ee31;
+    --border-display: #dbf10c;
+    --details-background: #f8f8da;
+    --details-shadow: #4c6558;
+    --details-border: #555252;
 
     /* Modal Colours */
-    --modal-gradient-top: #a0d8ee;
-    --modal-gradient-bottom: #d8eea0;
-    --modal-border: #4486d1;
-    --modal-title: #f5deb3;
-    --modal-text: #4c6558;
-    --modal-text-background: #f8f8da;
-    --modal-text-shadow: #ee82ee;
-    --modal-play-button-text: #3daee9;
-    --modal-play-button-hover: #808080;
+    --quinary: #3daee9;
+    --modal-border: #080cfc;
+    --modal-play-button-hover: #fc5a29;
 }
 
 /* Typography */
@@ -255,7 +257,8 @@ html {
 }
 
 body {
-    background: #edfeff;
+    background: var(--main-blue);
+    color: var(--quaternary);
 }
 
 .wrapper {
@@ -263,29 +266,75 @@ body {
     margin: 0 auto;
 }
 
+.header-blackjack {
+    color: var(--quinary);
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    font-family: "Times New Roman", Times, serif;
+}
+.header-pokemon {
+    color: var(--main-yellow);
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+}
+
 h1 {
     font-family: var(--heading-font);
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin: 0;
+}
+
+.player {
+    color: var(--quaternary);
+    font-weight: 1000;
+    font-size: 1.5rem;
+}
+
+.total {
+    color: var(--main-red);
+}
+
+.game p {
+    display: inline-block;
+    font-family: var(--battle-font);
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
 }
 
 /* Button styles */
 .game button {
-    padding: 10px;
+    padding: 0.5rem 1rem;
     border-radius: 10px;
     transition: 0.7s;
     cursor: pointer;
+    font-family: var(--battle-font);
+    margin-left: 1rem;
 }
 
 .game button:hover {
-    background-color: #ffff00;
+    background-color: var(--main-yellow);
 }
 
 .game button:focus {
-    background-color: #ffff00;
-    border: 2px solid #142b68;
+    background-color: var(--main-yellow);
+    border: 2px solid var(--main-blue);
 }
 
 /* Pokemon Display */
+.pokemon-display {
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--display-background),
+        var(--display-background-second) 5px
+    );
+    border-radius: 1rem;
+    border: solid 15px var(--border-display);
+    padding: 2rem 0;
+    color: black;
+}
+
 .opponent-display,
 .poke-display {
     display: flex;
@@ -295,35 +344,29 @@ h1 {
 }
 
 .details-container {
-    border: 3px solid black;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 1) 0%,
-        rgba(183, 183, 183, 1) 2%,
-        rgba(255, 255, 255, 1) 4%,
-        rgba(255, 255, 255, 1) 96%,
-        rgba(183, 183, 183, 1) 98%,
-        rgba(0, 0, 0, 1) 100%
-    );
+    border: 6px solid var(--details-border);
+    background: var(--details-background);
     padding: 20px 40px;
     width: 40%;
     margin: 30px 30px;
-    border-radius: 20px;
+    border-radius: 25px 6px;
+    box-shadow: 5px 10px 10px var(--details-shadow);
     position: relative;
 }
 
 .opponent-display .details-container::after {
     content: "►";
     position: absolute;
-    right: -27px;
+    right: -35px;
     top: 20px;
+    color: var(--border-display);
 }
 
 .poke-display .details-container::before {
     content: "◄";
     position: absolute;
-    left: -25px;
+    left: -35px;
+    color: var(--border-display);
 }
 
 .opponent-display img,
@@ -353,51 +396,51 @@ h1 {
     justify-content: center;
     width: 90%;
     margin: 0 auto;
-    padding: 50px 50px;
+    padding: 2rem 2rem;
 }
 
 .current-hand img {
     padding: 0 7px;
     width: 20%;
+    border: solid 5px var(--main-yellow);
+    border-radius: 0.5rem;
+    margin-right: 2rem;
+    padding: 1rem;
 }
 
 /* Footer */
 
 footer {
-    background-color: var(--main-blue);
-    width: 100%;
-    color: var(--off-white);
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    padding-top: 15px;
-    padding-bottom: 5px;
-    margin-top: 40px;
+    margin-top: 1rem;
 }
 
 footer p {
-    margin: 0;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
-
-footer a {
     color: var(--off-white);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
 }
 
 .small-copy {
-    font-size: 0.8rem;
-    margin-bottom: 5px;
+    font-size: 0.5rem;
+    margin: 0.2rem;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--main-yellow);
 }
 
 /*Modal styles*/
 .modal-content {
-    background: linear-gradient(
-        var(--modal-gradient-top),
-        var(--modal-gradient-bottom)
-    );
+    background: var(--main-blue);
     border: 20px ridge var(--modal-border);
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     position: absolute;
     top: 5vh;
     bottom: 5vh;
@@ -417,46 +460,36 @@ footer a {
 #playButton {
     font-family: var(--battle-font);
     font-weight: 1000;
-    font-size: 1.5rem;
+    font-size: 2rem;
     letter-spacing: 0.35rem;
-    line-height: 2.25rem;
-}
-
-.modal-title {
-    color: var(--modal-title);
-    font-weight: 1000;
-    text-shadow: 5px 0 var(--modal-text-shadow);
+    line-height: 2rem;
 }
 
 .welcome {
-    background-color: var(--modal-text-background);
-    border: 10px ridge var(--modal-text);
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     padding: 0.5rem;
     width: 90%;
-    text-align: center;
-}
-
-#playButton {
-    color: var(--modal-play-button-text);
-    text-shadow: 1px 1px 3px var(--modal-text-shadow);
-    background-color: transparent;
-    border: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding-bottom: 1rem;
-}
-
-#playButton:enabled:hover {
-    color: var(--modal-play-button-hover);
 }
 
 .welcome p {
     text-transform: uppercase;
-    color: var(--modal-text);
-    text-shadow: 1px 1px 3px var(--modal-text-shadow);
-    padding: 1rem 0;
+    color: var(--off-white);
+    padding: 1rem 3rem;
     margin: 0;
+}
+
+#playButton {
+    color: var(--quinary);
+    text-shadow: 1px 1px 3px var(--main-yellow);
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 0 1rem 3rem;
+}
+
+#playButton:enabled:hover {
+    color: var(--modal-play-button-hover);
 }
 
 /* Evolution Animations */
@@ -528,6 +561,7 @@ footer a {
 
 .results {
     display: flex;
+    height: 95vh;
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -651,6 +685,16 @@ footer a {
         font-size: 1rem;
         letter-spacing: 0.15rem;
         line-height: 1.25rem;
+    }
+
+    .header-pokemon {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+
+    .header-blackjack {
+        font-size: 2rem;
+        line-height: 2rem;
     }
 }
 
