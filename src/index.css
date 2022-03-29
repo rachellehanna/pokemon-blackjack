@@ -656,6 +656,14 @@ footer a:hover {
         border-radius: 20px;
     }
 
+    .pokemon-display {
+        margin: 0 10px;
+    }
+
+    .player {
+        text-align: center;
+    }
+
     .opponent-display .img-container,
     .poke-display .img-container {
         width: 25%;
@@ -707,5 +715,16 @@ footer a:hover {
 }
 
 /* Landscape phones and down */
-@media (max-width: 480px) {
+@media (max-width: 414px) {
+    .player {
+        margin-left: 60px;
+    }
+
+    .poke-name {
+        margin: 0;
+    }
+
+    .opponent-display img {
+        width: 130%;
+    }
 }
