@@ -303,6 +303,11 @@ h1 {
     letter-spacing: 0.2rem;
 }
 
+.game p.player {
+    display: block;
+    text-align: center;
+}
+
 /* Button styles */
 .game button {
     padding: 0.5rem 1rem;
@@ -401,10 +406,11 @@ h1 {
 
 .current-hand img {
     padding: 0 7px;
-    width: 20%;
+    width: 25%;
     border: solid 5px var(--main-yellow);
     border-radius: 0.5rem;
-    margin-right: 2rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
     padding: 1rem;
 }
 
@@ -649,41 +655,62 @@ footer a:hover {
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {
     .details-container {
-        border: 3px solid black;
         padding: 20px 40px;
         width: 55%;
         margin: 30px 30px;
-        border-radius: 20px;
+    }
+
+    .pokemon-display {
+        margin: 0 10px;
+    }
+
+    .player {
+        text-align: center;
     }
 
     .opponent-display .img-container,
     .poke-display .img-container {
-        width: 25%;
+        width: 40%;
     }
-
     .modal-content {
         left: 2vw;
         right: 2vw;
+    }
+
+    p.poke-name,
+    p.hit-points {
+        display: block;
     }
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
-    .details-container {
-        width: 55%;
+    .game p {
+        text-align: center;
     }
 
-    .opponent-display .img-container,
-    .poke-display .img-container {
-        width: 25%;
+    .pokemon-display {
+        margin: 0 5px;
+        padding: 0 20px;
+    }
+
+    .opponent-display,
+    .poke-display {
+        flex-direction: row;
+    }
+
+    .details-container {
+        width: 80%;
+        margin: 10px 0;
+        padding: 2%;
+    }
+
+    .current-hand {
+        padding: 0.5rem 0.5rem;
     }
 
     .current-hand img {
-        width: 50%;
-    }
-
-    .game p {
-        text-align: center;
+        width: 30%;
     }
 
     .modal-content,
@@ -706,6 +733,33 @@ footer a:hover {
     }
 }
 
-/* Landscape phones and down */
-@media (max-width: 480px) {
+@media (max-width: 500px) {
+    .current-hand img {
+        width: 40%;
+    }
+
+    .poke-display,
+    .opponent-display {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    p.poke-name,
+    p.hit-points {
+        margin-left: 10px;
+        display: block;
+        text-align: center;
+    }
+
+    .details-container {
+        width: 100%;
+    }
+    .details-container::after,
+    .details-container::before {
+        display: none;
+    }
+
+    .game p.player {
+        text-align: center;
+    }
 }
