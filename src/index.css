@@ -309,6 +309,10 @@ h1 {
 }
 
 /* Button styles */
+.game-buttons {
+    text-align: center; 
+}
+
 .game button {
     padding: 0.5rem 1rem;
     border-radius: 10px;
