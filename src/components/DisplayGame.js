@@ -274,40 +274,42 @@ const DisplayGame = () => {
                             </p>
                         )}
 
-                        <p className="total">Total: {playerOneTotal}</p>
+                        <div className="game-buttons">
+                            <p className="total">Total: {playerOneTotal}</p>
 
-                        <button
-                            disabled={
-                                playerOneDone || activePlayer !== "player1"
-                            }
-                            onClick={handlePlayerOneHit}
-                        >
-                            Hit
-                        </button>
-
-                        <button
-                            disabled={
-                                playerOneDone || activePlayer !== "player1"
-                            }
-                            onClick={() => {
-                                setPlayerOneDone(true);
-                                // On stand, deduct opponent health accordingly
-                                let opponentHealth = 21 - playerOneTotal;
-                                setPokeTwoHealth(opponentHealth);
-                            }}
-                        >
-                            Stand
-                        </button>
-
-                        {playerOneDone && !playerTwoDone ? (
                             <button
+                                disabled={
+                                    playerOneDone || activePlayer !== "player1"
+                                }
+                                onClick={handlePlayerOneHit}
+                            >
+                                Hit
+                            </button>
+
+                            <button
+                                disabled={
+                                    playerOneDone || activePlayer !== "player1"
+                                }
                                 onClick={() => {
-                                    setActivePlayer("player2");
+                                    setPlayerOneDone(true);
+                                    // On stand, deduct opponent health accordingly
+                                    let opponentHealth = 21 - playerOneTotal;
+                                    setPokeTwoHealth(opponentHealth);
                                 }}
                             >
-                                Player Two's Turn!
+                                Stand
                             </button>
-                        ) : null}
+
+                            {playerOneDone && !playerTwoDone ? (
+                                <button
+                                    onClick={() => {
+                                        setActivePlayer("player2");
+                                    }}
+                                >
+                                    Player Two's Turn!
+                                </button>
+                            ) : null}
+                        </div>
                     </>
                 ) : (
                     <>
@@ -330,40 +332,42 @@ const DisplayGame = () => {
                             </p>
                         )}
 
-                        <p className="total">Total: {playerTwoTotal}</p>
+                        <div className="game-buttons">
+                            <p className="total">Total: {playerTwoTotal}</p>
 
-                        <button
-                            disabled={
-                                playerTwoDone || activePlayer !== "player2"
-                            }
-                            onClick={handlePlayerTwoHit}
-                        >
-                            Hit
-                        </button>
-
-                        <button
-                            disabled={
-                                playerTwoDone || activePlayer !== "player2"
-                            }
-                            onClick={() => {
-                                setPlayerTwoDone(true);
-                                // On stand, deduct opponent health accordingly
-                                let opponentHealth = 21 - playerTwoTotal;
-                                setPokeOneHealth(opponentHealth);
-                            }}
-                        >
-                            Stand
-                        </button>
-
-                        {playerTwoDone && !playerOneDone ? (
                             <button
+                                disabled={
+                                    playerTwoDone || activePlayer !== "player2"
+                                }
+                                onClick={handlePlayerTwoHit}
+                            >
+                                Hit
+                            </button>
+
+                            <button
+                                disabled={
+                                    playerTwoDone || activePlayer !== "player2"
+                                }
                                 onClick={() => {
-                                    setActivePlayer("player1");
+                                    setPlayerTwoDone(true);
+                                    // On stand, deduct opponent health accordingly
+                                    let opponentHealth = 21 - playerTwoTotal;
+                                    setPokeOneHealth(opponentHealth);
                                 }}
                             >
-                                Player One's Turn!
+                                Stand
                             </button>
-                        ) : null}
+
+                            {playerTwoDone && !playerOneDone ? (
+                                <button
+                                    onClick={() => {
+                                        setActivePlayer("player1");
+                                    }}
+                                >
+                                    Player One's Turn!
+                                </button>
+                            ) : null}
+                        </div>
                     </>
                 )
             }
